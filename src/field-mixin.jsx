@@ -14,9 +14,9 @@ export default {
         displayValidation: React.PropTypes.bool
     },
     getDefaultProps,
-    componentWillMount,
     isValid,
     getGroupClass,
+    getElementProps,
     handleChange,
     shouldComponentUpdate
 }
@@ -29,15 +29,17 @@ function getDefaultProps() {
     }
 }
 
-function componentWillMount() {
-    this.elementProps = {
+function getElementProps() {
+    return {
         ref: 'fieldEl',
         id: this.props.name,
         name: this.props.name,
-        label: this.props.label,
+        required: this.props.required,
+        disabled: this.props.disabled,
         defaultValue: this.props.defaultValue,
-        className: 'form-control',
-        onChange: this.handleChange
+        value: this.props.value,
+        onChange: this.handleChange,
+        className: 'form-control'
     }
 }
 

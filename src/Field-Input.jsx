@@ -14,25 +14,19 @@ export default React.createClass({
 
 function render() {
 
-    const props = Object.assign({}, this.elementProps, {
-        type: this.props.type,
-        required: this.props.required,
-        disabled: this.props.disabled,
-        placeholder: this.props.placeholder,
-        value: this.props.value
-    })
+    const elProps = this.getElementProps()
 
     return (
         <div className={this.getGroupClass()}>
-            <label htmlFor={props.id}>{props.label} {props.required ? '*' : undefined}</label>
-            <input {...props} />
+            <label htmlFor={elProps.id}>{this.props.label} {this.props.required ? '*' : undefined}</label>
+            <input type={this.props.type} placeholder={this.props.placeholder} {...elProps} />
         </div>
     )
 }
 
 function getDefaultProps() {
     return {
-        value: '',
+        value: null,
         type: 'text'
     }
 }
