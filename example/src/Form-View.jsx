@@ -26,10 +26,12 @@ function render() {
     }
 
     return (
-        <div>
-            <form noValidate>
-                <Input {...firstName} />
-            </form>
+        <div className="row">
+            <div className="col-md-8 col-md-offset-2">
+                <form noValidate>
+                    <Input {...firstName} />
+                </form>
+            </div>
         </div>
     )
 }
