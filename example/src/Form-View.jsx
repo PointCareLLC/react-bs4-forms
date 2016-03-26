@@ -6,23 +6,23 @@ import { Input } from '../../src'
 export default React.createClass({
     render,
     getInitialState,
-    handleUpdate
+    handleChange
 })
 
 function render() {
 
     const firstName = {
         type: 'text',
+        placeholder: 'Tommy',
         name: 'firstName',
         label: 'First Name',
-        placeholder: 'Tommy',
         required: true,
         disabled: false,
         defaultValue: null,
         value: this.state.values.firstName,
         validation: (value) => value === 'Billy',
         displayValidation: true,
-        onUpdate: this.handleUpdate
+        handleChange: this.handleChange
     }
 
     return (
@@ -38,13 +38,11 @@ function render() {
 
 function getInitialState() {
     return {
-        values: {
-            inputField: null
-        }
+        values: {}
     }
 }
 
-function handleUpdate(name, value, valid) {
+function handleChange(name, value, valid) {
     var values = this.state.values
     values[name] = value
     this.setState({ values: values })

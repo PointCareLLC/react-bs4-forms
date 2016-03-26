@@ -26,10 +26,8 @@ describe('field-mixin', () => {
     it('Should render', () => {
 
         const testProps = {
-            type: 'text',
             name: 'firstName',
             label: 'First Name',
-            placeholder: 'Tommy',
             required: true,
             disabled: false,
             defaultValue: null,
@@ -42,5 +40,7 @@ describe('field-mixin', () => {
         const testInput = TestUtils.renderIntoDocument(
           <TestInput {...testProps} />
         )
+
+        console.log(testInput)
     })
 })

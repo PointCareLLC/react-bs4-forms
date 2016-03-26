@@ -11,13 +11,14 @@ export default {
         defaultValue: React.PropTypes.oneOfType([ React.PropTypes.string, React.PropTypes.number ]),
         value: React.PropTypes.oneOfType([ React.PropTypes.string, React.PropTypes.number ]),
         validation: React.PropTypes.func,
-        displayValidation: React.PropTypes.bool
+        displayValidation: React.PropTypes.bool,
+        handleChange: React.PropTypes.func.isRequired
     },
     getDefaultProps,
     isValid,
     getGroupClass,
     getElementProps,
-    handleChange,
+    handleElChange,
     shouldComponentUpdate
 }
 
@@ -38,7 +39,7 @@ function getElementProps() {
         disabled: this.props.disabled,
         defaultValue: this.props.defaultValue,
         value: this.props.value,
-        onChange: this.handleChange,
+        onChange: this.handleElChange,
         className: 'form-control'
     }
 }
@@ -47,8 +48,8 @@ function shouldComponentUpdate(nextProps) {
     return nextProps.value !== this.props.value
 }
 
-function handleChange() {
-    this.props.onUpdate(this.props.name, this.refs.fieldEl.value, this.isValid(this.refs.fieldEl.value))
+function handleElChange() {
+    this.props.handleChange(this.props.name, this.refs.fieldEl.value, this.isValid(this.refs.fieldEl.value))
 }
 
 function isValid(value) {
