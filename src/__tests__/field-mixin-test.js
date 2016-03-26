@@ -30,17 +30,15 @@ describe('field-mixin', () => {
             label: 'First Name',
             required: true,
             disabled: false,
-            defaultValue: null,
+            defaultValue: 'James',
             value: null,
-            validation: (value) => value === 'Billy',
+            validation: (value) => true,
             displayValidation: true,
-            onUpdate: (name, value, valid) => console.log(value)
+            handleChange: (name, value, valid) => console.log(value)
         }
 
         const testInput = TestUtils.renderIntoDocument(
-          <TestInput {...testProps} />
+            <TestInput {...testProps} />
         )
-
-        console.log(testInput)
     })
 })
