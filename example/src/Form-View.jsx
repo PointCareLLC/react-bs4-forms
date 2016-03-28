@@ -58,7 +58,7 @@ function render() {
         value: this.state.values.color,
         valid: null,
         handleChange: this.handleChange,
-        options: [{ value: 'r', text: 'Red' }, { value: 'g', text: 'Green' }, { value: 'b', text: 'Blue' }]
+        options: [{ id: 'red', text: 'Red' }, { id: 'green', text: 'Green' }, { id: 'blue', text: 'Blue' }]
     }
 
     return (
@@ -73,7 +73,9 @@ function render() {
 
 function getInitialState() {
     return {
-        values: {}
+        values: {
+            color: { 'green': true }
+        }
     }
 }
 

@@ -1,38 +1,57 @@
 
 import React from 'react'
 import Label from './Label.jsx'
+import CheckboxItem from './Field-Checkbox-Item.jsx'
 import fieldMixin from './field-mixin.jsx'
 
 export default React.createClass({
     mixins: [ fieldMixin ],
     propTypes: {
-        options: React.PropTypes.array.isRequired
+        options: React.PropTypes.array.isRequired,
+        value: React.PropTypes.object
     },
-    render
+    render,
+    getDefaultProps,
+    handleUpdate
 })
 
 function render() {
 
-    const elClass = this.getElClass()
-    const elProps = this.getElementProps()
+    const self = this
     const lbProps = this.getLabelProps()
 
     return (
-        <div className={this.getGroupClass()}>
+        <fieldset className={this.getGroupClass()}>
             <Label {...lbProps} />
             <div className="c-inputs-stacked">
                 {
-                    this.props.options.map((item, index) => {
+                    this.props.options.map(item => {
+
+                        const itemProps = {
+                            id: item.id,
+                            text: item.text,
+                            checked: self.props.value[item.id],
+                            handleUpdate: self.handleUpdate
+                        }
+
                         return (
-                            <label key={index} className="c-input c-checkbox">
-                                {item.text}
-                                <input type="checkbox" value={item.value} />
-                                <span className="c-indicator" />
-                            </label>
+                            <CheckboxItem key={item.id} {...itemProps} />
                         )
                     })
                 }
             </div>
-        </div>
+        </fieldset>
     )
+}
+
+function getDefaultProps() {
+    return {
+        value: {}
+    }
+}
+
+function handleUpdate(id, value) {
+    let values = Object.assign({}, this.props.value)
+    values[id] = value
+    this.handleElChange(null, values)
 }
