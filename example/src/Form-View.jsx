@@ -1,7 +1,7 @@
 
 import React from 'react'
 
-import { Input, Textarea } from '../../src'
+import { Input, Textarea, Select } from '../../src'
 
 export default React.createClass({
     render,
@@ -16,7 +16,7 @@ function render() {
         placeholder: 'Tommy',
         name: 'firstName',
         label: 'First Name',
-        size: 'lg',
+        size: null,
         required: true,
         disabled: false,
         value: this.state.values.firstName,
@@ -29,12 +29,26 @@ function render() {
         placeholder: 'This is my note',
         name: 'note',
         label: 'Note',
-        size: 'lg',
+        size: null,
         required: true,
         disabled: false,
         value: this.state.values.note,
         valid: null,
         handleChange: this.handleChange
+    }
+
+    const gender = {
+        rows: '4',
+        placeholder: 'What is your gender',
+        name: 'gender',
+        label: 'Gender',
+        size: null,
+        required: true,
+        disabled: false,
+        value: this.state.values.gender,
+        valid: null,
+        handleChange: this.handleChange,
+        options: [{ value: 'm', text: 'Male' }, { value: 'f', text: 'Female' }, { value: 'o', text: 'Other' }]
     }
 
     return (
@@ -43,6 +57,7 @@ function render() {
                 <form noValidate>
                     <Input {...firstName} />
                     <Textarea {...note} />
+                    <Select {...gender}/>
                 </form>
             </div>
         </div>

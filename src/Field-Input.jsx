@@ -15,13 +15,14 @@ export default React.createClass({
 
 function render() {
 
+    const elClass = this.getElClass()
     const elProps = this.getElementProps()
     const lbProps = this.getLabelProps()
 
     return (
         <div className={this.getGroupClass()}>
             <Label {...lbProps} />
-            <input type={this.props.type} placeholder={this.props.placeholder} {...elProps} />
+            <input type={this.props.type} placeholder={this.props.placeholder} className={elClass} {...elProps} />
         </div>
     )
 }
