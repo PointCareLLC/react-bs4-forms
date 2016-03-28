@@ -8,7 +8,7 @@ export default {
         label: React.PropTypes.string,
         required: React.PropTypes.bool,
         disabled: React.PropTypes.bool,
-        value: React.PropTypes.oneOfType([ React.PropTypes.string, React.PropTypes.number ]),
+        value: React.PropTypes.oneOfType([ React.PropTypes.string, React.PropTypes.number, React.PropTypes.object ]),
         valid: React.PropTypes.bool,
         handleChange: React.PropTypes.func.isRequired,
         size: React.PropTypes.string
@@ -33,8 +33,8 @@ function shouldComponentUpdate(nextProps) {
     return nextProps.value !== this.props.value
 }
 
-function handleElChange() {
-    this.props.handleChange(this.props.name, this.refs.fieldEl.value)
+function handleElChange(event, value) {
+    this.props.handleChange(this.props.name, value || this.refs.fieldEl.value)
 }
 
 function getElementProps() {

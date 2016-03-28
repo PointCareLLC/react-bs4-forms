@@ -1,7 +1,7 @@
 
 import React from 'react'
 
-import { Input, Textarea, Select } from '../../src'
+import { Input, Textarea, Select, Checkbox } from '../../src'
 
 export default React.createClass({
     render,
@@ -38,10 +38,8 @@ function render() {
     }
 
     const gender = {
-        rows: '4',
-        placeholder: 'What is your gender',
         name: 'gender',
-        label: 'Gender',
+        label: 'Select Gender',
         size: null,
         required: true,
         disabled: false,
@@ -51,22 +49,33 @@ function render() {
         options: [{ value: 'm', text: 'Male' }, { value: 'f', text: 'Female' }, { value: 'o', text: 'Other' }]
     }
 
+    const color = {
+        name: 'color',
+        label: 'Favorite Color',
+        size: null,
+        required: true,
+        disabled: false,
+        value: this.state.values.color,
+        valid: null,
+        handleChange: this.handleChange,
+        options: [{ id: 'red', text: 'Red' }, { id: 'green', text: 'Green' }, { id: 'blue', text: 'Blue' }]
+    }
+
     return (
-        <div className="row">
-            <div className="col-md-8 col-md-offset-2">
-                <form noValidate>
-                    <Input {...firstName} />
-                    <Textarea {...note} />
-                    <Select {...gender}/>
-                </form>
-            </div>
-        </div>
+        <form noValidate>
+            <Input {...firstName} />
+            <Textarea {...note} />
+            <Select {...gender} />
+            <Checkbox {...color} />
+        </form>
     )
 }
 
 function getInitialState() {
     return {
-        values: {}
+        values: {
+            color: { 'green': true }
+        }
     }
 }
 
