@@ -8,16 +8,18 @@ export default {
         label: React.PropTypes.string,
         required: React.PropTypes.bool,
         disabled: React.PropTypes.bool,
-        defaultValue: React.PropTypes.oneOfType([ React.PropTypes.string, React.PropTypes.number ]),
         value: React.PropTypes.oneOfType([ React.PropTypes.string, React.PropTypes.number ]),
         validation: React.PropTypes.func,
         displayValidation: React.PropTypes.bool,
-        handleChange: React.PropTypes.func.isRequired
+        handleChange: React.PropTypes.func.isRequired,
+        size: React.PropTypes.string
     },
     getDefaultProps,
     isValid,
     getGroupClass,
+    getElClass,
     getElementProps,
+    getLabelProps,
     handleElChange,
     shouldComponentUpdate
 }
@@ -37,10 +39,17 @@ function getElementProps() {
         name: this.props.name,
         required: this.props.required,
         disabled: this.props.disabled,
-        defaultValue: this.props.defaultValue,
         value: this.props.value,
         onChange: this.handleElChange,
-        className: 'form-control'
+        className: this.getElClass()
+    }
+}
+
+function getLabelProps() {
+    return {
+        forEl: this.props.name,
+        text: this.props.label,
+        required: this.props.required
     }
 }
 
@@ -56,8 +65,22 @@ function isValid(value) {
     return validCheck(value || this.props.value, this.props.required, this.props.validation)
 }
 
+function getElClass() {
+    switch (this.props.size) {
+
+        case 'sm':
+            return 'form-control form-control-sm'
+
+        case 'lg':
+            return 'form-control form-control-lg'
+
+        default:
+            return 'form-control'
+    }
+}
+
 function getGroupClass() {
-    if (this.props.displayValidation === false) return
+    if (this.props.displayValidation === false) return null
     if (this.isValid() === false) return 'form-group has-danger'
     return emptyCheck(this.props.value) ? 'form-group' : 'form-group has-success'
 }

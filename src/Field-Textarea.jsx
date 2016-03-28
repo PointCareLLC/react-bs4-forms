@@ -1,6 +1,7 @@
 
 import React from 'react'
-import fieldMixin from './field-mixin'
+import Label from './Label.jsx'
+import fieldMixin from './field-mixin.jsx'
 
 export default React.createClass({
     mixins: [ fieldMixin ],
@@ -14,25 +15,20 @@ export default React.createClass({
 
 function render() {
 
-    const props = Object.assign({}, this.elementProps, {
-        required: this.props.required,
-        disabled: this.props.disabled,
-        placeholder: this.props.placeholder,
-        rows: this.props.rows,
-        value: this.props.value
-    })
+    const elProps = this.getElementProps()
+    const lbProps = this.getLabelProps()
 
     return (
         <div className={this.getGroupClass()}>
-            <label htmlFor={props.id}>{props.label} {props.required ? '*' : undefined}</label>
-            <textarea {...props} />
+            <Label {...lbProps} />
+            <textarea rows={this.props.rows} placeholder={this.props.placeholder} {...elProps} />
         </div>
     )
 }
 
 function getDefaultProps() {
     return {
-        value: '',
+        value: null,
         rows: '3'
     }
 }

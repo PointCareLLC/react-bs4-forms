@@ -1,5 +1,6 @@
 
 import React from 'react'
+import Label from './Label.jsx'
 import fieldMixin from './field-mixin.jsx'
 
 export default React.createClass({
@@ -15,10 +16,11 @@ export default React.createClass({
 function render() {
 
     const elProps = this.getElementProps()
+    const lbProps = this.getLabelProps()
 
     return (
         <div className={this.getGroupClass()}>
-            <label htmlFor={elProps.id}>{this.props.label} {this.props.required ? '*' : undefined}</label>
+            <Label {...lbProps} />
             <input type={this.props.type} placeholder={this.props.placeholder} {...elProps} />
         </div>
     )
