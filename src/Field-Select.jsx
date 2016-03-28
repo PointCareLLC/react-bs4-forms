@@ -6,7 +6,7 @@ import fieldMixin from './field-mixin.jsx'
 export default React.createClass({
     mixins: [ fieldMixin ],
     propTypes: {
-
+        options: React.PropTypes.array.isRequired
     },
     render
 })
@@ -21,10 +21,14 @@ function render() {
         <div className={this.getGroupClass()}>
             <Label {...lbProps} />
             <select {...elProps} className={elClass}>
-              <option>Select Option</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+                <option value=''>select option</option>
+                {
+                    this.props.options.map((item, index) => {
+                        return (
+                            <option key={index} value={item.value}>{item.text}</option>
+                        )
+                    })
+                }
             </select>
         </div>
     )
