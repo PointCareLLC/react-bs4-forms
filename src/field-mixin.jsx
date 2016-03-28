@@ -9,19 +9,17 @@ export default {
         required: React.PropTypes.bool,
         disabled: React.PropTypes.bool,
         value: React.PropTypes.oneOfType([ React.PropTypes.string, React.PropTypes.number ]),
-        validation: React.PropTypes.func,
-        displayValidation: React.PropTypes.bool,
+        valid: React.PropTypes.bool,
         handleChange: React.PropTypes.func.isRequired,
         size: React.PropTypes.string
     },
     getDefaultProps,
-    isValid,
-    getGroupClass,
-    getElClass,
+    shouldComponentUpdate,
+    handleElChange,
     getElementProps,
     getLabelProps,
-    handleElChange,
-    shouldComponentUpdate
+    getElClass,
+    getGroupClass
 }
 
 function getDefaultProps() {
@@ -30,6 +28,14 @@ function getDefaultProps() {
         disabled: false,
         displayValidation: true
     }
+}
+
+function shouldComponentUpdate(nextProps) {
+    return nextProps.value !== this.props.value
+}
+
+function handleElChange() {
+    this.props.handleChange(this.props.name, this.refs.fieldEl.value)
 }
 
 function getElementProps() {
@@ -53,25 +59,13 @@ function getLabelProps() {
     }
 }
 
-function shouldComponentUpdate(nextProps) {
-    return nextProps.value !== this.props.value
-}
-
-function handleElChange() {
-    this.props.handleChange(this.props.name, this.refs.fieldEl.value, this.isValid(this.refs.fieldEl.value))
-}
-
-function isValid(value) {
-    return validCheck(value || this.props.value, this.props.required, this.props.validation)
-}
-
 function getElClass() {
     switch (this.props.size) {
 
-        case 'sm':
+        case ('sm'):
             return 'form-control form-control-sm'
 
-        case 'lg':
+        case ('lg'):
             return 'form-control form-control-lg'
 
         default:
@@ -80,7 +74,15 @@ function getElClass() {
 }
 
 function getGroupClass() {
-    if (this.props.displayValidation === false) return null
-    if (this.isValid() === false) return 'form-group has-danger'
-    return emptyCheck(this.props.value) ? 'form-group' : 'form-group has-success'
+    switch (this.props.valid) {
+
+        case (true):
+            return 'form-group has-success'
+
+        case (false):
+            return 'form-group has-danger'
+
+        default:
+            return 'form-group'
+    }
 }

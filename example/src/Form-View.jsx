@@ -20,8 +20,7 @@ function render() {
         required: true,
         disabled: false,
         value: this.state.values.firstName,
-        validation: (value) => value === 'Billy',
-        displayValidation: true,
+        valid: null,
         handleChange: this.handleChange
     }
 
@@ -34,8 +33,7 @@ function render() {
         required: true,
         disabled: false,
         value: this.state.values.note,
-        validation: null,
-        displayValidation: true,
+        valid: null,
         handleChange: this.handleChange
     }
 
@@ -57,7 +55,7 @@ function getInitialState() {
     }
 }
 
-function handleChange(name, value, valid) {
+function handleChange(name, value) {
     var values = this.state.values
     values[name] = value
     this.setState({ values: values })
