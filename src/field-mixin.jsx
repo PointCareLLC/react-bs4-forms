@@ -25,8 +25,7 @@ export default {
 function getDefaultProps() {
     return {
         required: false,
-        disabled: false,
-        displayValidation: true
+        disabled: false
     }
 }
 
@@ -46,8 +45,7 @@ function getElementProps() {
         required: this.props.required,
         disabled: this.props.disabled,
         value: this.props.value,
-        onChange: this.handleElChange,
-        className: this.getElClass()
+        onChange: this.handleElChange
     }
 }
 

@@ -1,7 +1,7 @@
 
 import React from 'react'
 
-import { Input, Textarea } from '../../src'
+import { Input, Textarea, Select } from '../../src'
 
 export default React.createClass({
     render,
@@ -37,12 +37,26 @@ function render() {
         handleChange: this.handleChange
     }
 
+    const gender = {
+        rows: '4',
+        placeholder: 'What is your gender',
+        name: 'gender',
+        label: 'Gender',
+        size: 'lg',
+        required: true,
+        disabled: false,
+        value: this.state.values.gender,
+        valid: null,
+        handleChange: this.handleChange
+    }
+
     return (
         <div className="row">
             <div className="col-md-8 col-md-offset-2">
                 <form noValidate>
                     <Input {...firstName} />
                     <Textarea {...note} />
+                    <Select {...gender}/>
                 </form>
             </div>
         </div>
