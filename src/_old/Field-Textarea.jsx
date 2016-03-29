@@ -30,7 +30,7 @@ function render() {
 
 function getDefaultProps() {
     return {
-        value: null,
+        value: '',
         rows: '3'
     }
 }

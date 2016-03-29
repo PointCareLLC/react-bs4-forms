@@ -1,6 +1,5 @@
 
 import React from 'react'
-import { emptyCheck, validCheck } from './value-checkers'
 
 export default {
     propTypes: {
