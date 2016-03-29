@@ -6,7 +6,8 @@ import fieldMixin from './field-mixin.jsx'
 export default React.createClass({
     mixins: [ fieldMixin ],
     propTypes: {
-        options: React.PropTypes.array.isRequired
+        options: React.PropTypes.array.isRequired,
+        value: React.PropTypes.string
     },
     render
 })

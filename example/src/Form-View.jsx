@@ -1,7 +1,7 @@
 
 import React from 'react'
 
-import { Input, Textarea, Select, Checkbox } from '../../src'
+import { Input, Textarea, Select, Checkbox, Radio } from '../../src'
 
 export default React.createClass({
     render,
@@ -61,12 +61,25 @@ function render() {
         options: [{ id: 'red', text: 'Red' }, { id: 'green', text: 'Green' }, { id: 'blue', text: 'Blue' }]
     }
 
+    const employed = {
+        name: 'employed',
+        label: 'Are you currently Employed?',
+        size: null,
+        required: true,
+        disabled: false,
+        value: this.state.values.employed,
+        valid: null,
+        handleChange: this.handleChange,
+        options: [{ value: 'yes', text: 'Yes' }, { value: 'no', text: 'No' }]
+    }
+
     return (
         <form noValidate>
             <Input {...firstName} />
             <Textarea {...note} />
             <Select {...gender} />
             <Checkbox {...color} />
+            <Radio {...employed} />
         </form>
     )
 }
@@ -74,7 +87,11 @@ function render() {
 function getInitialState() {
     return {
         values: {
-            color: { 'green': true }
+            gender: 'm',
+            color: { 'green': true },
+            employed: 'no',
+            note: 'This is my note!',
+            firstName: 'Jimmy'
         }
     }
 }
