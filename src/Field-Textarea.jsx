@@ -7,7 +7,8 @@ export default React.createClass({
     mixins: [ fieldMixin ],
     propTypes: {
         placeholder: React.PropTypes.string,
-        rows: React.PropTypes.string
+        rows: React.PropTypes.string,
+        value: React.PropTypes.string
     },
     getDefaultProps,
     render
