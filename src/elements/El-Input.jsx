@@ -3,7 +3,7 @@ import React from 'react'
 
 export default React.createClass({
     propTypes: {
-        id: React.PropTypes.string.isRequired,
+        name: React.PropTypes.string.isRequired,
         onUpdate: React.PropTypes.func.isRequired,
         type: React.PropTypes.string,
         placeholder: React.PropTypes.string,
@@ -19,8 +19,8 @@ function render() {
 
     const props = {
         ref: 'el',
-        id: this.props.id,
-        name: this.props.id,
+        id: this.props.name,
+        name: this.props.name,
         type: this.props.type,
         placeholder: this.props.placeholder,
         value: this.props.value,
@@ -42,5 +42,5 @@ function getDefaultProps() {
 }
 
 function handleChange() {
-    this.props.onUpdate(this.props.id, this.refs.el.value)
+    this.props.onUpdate(this.props.name, this.refs.el.value)
 }

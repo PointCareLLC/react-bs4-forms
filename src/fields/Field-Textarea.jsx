@@ -6,7 +6,7 @@ import Textarea from '../elements/El-Textarea.jsx'
 
 export default React.createClass({
     propTypes: {
-        id: React.PropTypes.string.isRequired,
+        name: React.PropTypes.string.isRequired,
         onUpdate: React.PropTypes.func.isRequired,
         label: React.PropTypes.string.isRequired,
         rows: React.PropTypes.string,
@@ -21,8 +21,9 @@ export default React.createClass({
 
 function render() {
 
-    const inputProps = {
-        id: this.props.id,
+    const textareaProps = {
+        id: this.props.name,
+        name: this.props.name,
         onUpdate: this.props.onUpdate,
         rows: this.props.rows,
         placeholder: this.props.placeholder,
@@ -32,8 +33,8 @@ function render() {
 
     return (
         <Fieldset valid={this.props.valid}>
-            <Label id={this.props.id} text={this.props.label} required={this.props.required} />
-            <Textarea {...inputProps} />
+            <Label id={this.props.name} text={this.props.label} required={this.props.required} />
+            <Textarea {...textareaProps} />
         </Fieldset>
     )
 }

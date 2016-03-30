@@ -12,21 +12,21 @@ export default React.createClass({
 function render() {
 
     const firstName = {
-        id: 'firstname',
+        name: 'firstname',
         label: 'First Name',
         value: this.state.values.firstname,
         onUpdate: this.handleUpdate
     }
 
     const quote = {
-        id: 'favquote',
+        name: 'favquote',
         label: 'Favorite Quote',
         value: this.state.values.favquote,
         onUpdate: this.handleUpdate
     }
 
     const color = {
-        id: 'favcolor',
+        name: 'favcolor',
         label: 'Favorite Color',
         placeholder: 'Choose a color',
         value: this.state.values.favcolor,
@@ -49,8 +49,8 @@ function getInitialState() {
     }
 }
 
-function handleUpdate(id, value) {
+function handleUpdate(name, value) {
     var values = this.state.values
-    values[id] = value
+    values[name] = value
     this.setState({ values: values })
 }

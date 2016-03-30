@@ -5,13 +5,10 @@ export default React.createClass({
     propTypes: {
         name: React.PropTypes.string.isRequired,
         onUpdate: React.PropTypes.func.isRequired,
-        options: React.PropTypes.array.isRequired,
-        placeholder: React.PropTypes.string,
         value: React.PropTypes.string,
         disabled: React.PropTypes.bool
     },
     render,
-    getDefaultProps,
     handleChange
 })
 
@@ -35,12 +32,6 @@ function render() {
             })}
         </select>
     )
-}
-
-function getDefaultProps() {
-    return {
-        placeholder: 'Select Option'
-    }
 }
 
 function handleChange() {

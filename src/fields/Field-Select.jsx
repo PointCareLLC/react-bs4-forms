@@ -6,7 +6,7 @@ import Select from '../elements/El-Select.jsx'
 
 export default React.createClass({
     propTypes: {
-        id: React.PropTypes.string.isRequired,
+        name: React.PropTypes.string.isRequired,
         onUpdate: React.PropTypes.func.isRequired,
         label: React.PropTypes.string.isRequired,
         options: React.PropTypes.array.isRequired,
@@ -22,7 +22,8 @@ export default React.createClass({
 function render() {
 
     const selectProps = {
-        id: this.props.id,
+        id: this.props.name,
+        name: this.props.name,
         onUpdate: this.props.onUpdate,
         options: this.props.options,
         placeholder: this.props.placeholder,
@@ -32,7 +33,7 @@ function render() {
 
     return (
         <Fieldset valid={this.props.valid}>
-            <Label id={this.props.id} text={this.props.label} required={this.props.required} />
+            <Label id={this.props.name} text={this.props.label} required={this.props.required} />
             <Select {...selectProps} />
         </Fieldset>
     )
