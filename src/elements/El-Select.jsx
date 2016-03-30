@@ -23,7 +23,8 @@ function render() {
         name: this.props.id,
         value: this.props.value,
         disabled: this.props.disabled,
-        className: 'form-control c-select'
+        className: 'form-control c-select',
+        onChange: this.handleChange
     }
 
     const handleChange = this.handleChange
@@ -32,7 +33,7 @@ function render() {
         <select {...props}>
             <option value=''>{this.props.placeholder}</option>
             {this.props.options.map(item => {
-                return <option key={item.value} value={item.value} onChange={handleChange}>{item.text}</option>
+                return <option key={item.value} value={item.value}>{item.text}</option>
             })}
         </select>
     )
