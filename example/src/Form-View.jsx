@@ -1,7 +1,7 @@
 
 import React from 'react'
 
-import { Input, Textarea, Select } from '../../src'
+import { Input, Textarea, Select, Radio } from '../../src'
 
 export default React.createClass({
     render,
@@ -34,11 +34,22 @@ function render() {
         onUpdate: this.handleUpdate
     }
 
+    const drink = {
+        name: 'drink',
+        label: 'Size of drink',
+        value: this.state.values.drink,
+        options: [{ value: 'sm', text: 'Small' }, { value: 'md', text: 'Medium' }, { value: 'lg', text: 'Large' }],
+        onUpdate: this.handleUpdate
+    }
+
     return (
         <form noValidate>
             <Input {...firstName} />
             <Textarea {...quote} />
             <Select {...color} />
+            <Radio name={drink.name} value={drink.options[0].value} text={drink.options[0].text} checked={drink.value === drink.options[0].value} onUpdate={this.handleUpdate} />
+            <Radio name={drink.name} value={drink.options[1].value} text={drink.options[1].text} checked={drink.value === drink.options[1].value} onUpdate={this.handleUpdate} />
+            <Radio name={drink.name} value={drink.options[2].value} text={drink.options[2].text} checked={drink.value === drink.options[2].value} onUpdate={this.handleUpdate} />
         </form>
     )
 }
@@ -50,6 +61,7 @@ function getInitialState() {
 }
 
 function handleUpdate(name, value) {
+    console.log('form update:', name, value)
     var values = this.state.values
     values[name] = value
     this.setState({ values: values })
