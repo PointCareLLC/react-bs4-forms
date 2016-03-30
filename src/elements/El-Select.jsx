@@ -5,7 +5,7 @@ export default React.createClass({
     propTypes: {
         id: React.PropTypes.string.isRequired,
         onUpdate: React.PropTypes.func.isRequired,
-        rows: React.PropTypes.string,
+        options: React.PropTypes.array.isRequired,
         placeholder: React.PropTypes.string,
         value: React.PropTypes.string,
         disabled: React.PropTypes.bool
@@ -21,23 +21,26 @@ function render() {
         ref: 'el',
         id: this.props.id,
         name: this.props.id,
-        rows: this.props.rows,
-        placeholder: this.props.placeholder,
         value: this.props.value,
         disabled: this.props.disabled,
-        className: 'form-control'
+        className: 'form-control c-select'
     }
 
+    const handleChange = this.handleChange
+
     return (
-        <textarea {...props} onChange={this.handleChange} />
+        <select {...props}>
+            <option value=''>{this.props.placeholder}</option>
+            {this.props.options.map(item => {
+                return <option key={item.value} value={item.value} onChange={handleChange}>{item.text}</option>
+            })}
+        </select>
     )
 }
 
 function getDefaultProps() {
     return {
-        value: '',
-        rows: '3',
-        disabled: false
+        placeholder: 'Select Option'
     }
 }
 

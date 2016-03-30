@@ -1,7 +1,7 @@
 
 import React from 'react'
 
-import { Input, Textarea } from '../../src'
+import { Input, Textarea, Select } from '../../src'
 
 export default React.createClass({
     render,
@@ -25,10 +25,20 @@ function render() {
         onUpdate: this.handleUpdate
     }
 
+    const color = {
+        id: 'favcolor',
+        label: 'Favorite Color',
+        placeholder: 'Choose a color',
+        value: this.state.values.favcolor,
+        options: [{ value: 'red', text: 'Red' }, { value: 'blue', text: 'Blue' }, { value: 'green', text: 'Green' }],
+        onUpdate: this.handleUpdate
+    }
+
     return (
         <form noValidate>
             <Input {...firstName} />
             <Textarea {...quote} />
+            <Select {...color} />
         </form>
     )
 }

@@ -20,6 +20,7 @@ function render() {
     const props = {
         ref: 'el',
         id: this.props.id,
+        name: this.props.id,
         type: this.props.type,
         placeholder: this.props.placeholder,
         value: this.props.value,
