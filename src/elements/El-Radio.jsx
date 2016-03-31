@@ -6,6 +6,7 @@ export default React.createClass({
         name: React.PropTypes.string.isRequired,
         onUpdate: React.PropTypes.func.isRequired,
         value: React.PropTypes.string.isRequired,
+        text: React.PropTypes.string.isRequired,
         checked: React.PropTypes.bool,
         disabled: React.PropTypes.bool
     },
@@ -34,5 +35,5 @@ function render() {
 }
 
 function handleChange() {
-    this.props.onUpdate(this.props.name, this.props.value, 'radio')
+    this.props.onUpdate(this.props.name, this.props.value)
 }

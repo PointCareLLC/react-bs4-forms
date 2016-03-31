@@ -1,7 +1,7 @@
 
 import React from 'react'
 
-import { Input, Textarea, Select, Radio, Checkbox } from '../../src'
+import { Input, Textarea, Select, Radio, Checkbox, RadioGroup } from '../../src'
 
 export default React.createClass({
     render,
@@ -34,36 +34,43 @@ function render() {
         onUpdate: this.handleUpdate
     }
 
-    const drink = {
-        name: 'drink',
-        label: 'Size of drink',
-        value: this.state.values.drink,
-        options: [{ value: 'sm', text: 'Small' }, { value: 'md', text: 'Medium' }, { value: 'lg', text: 'Large' }],
-        onUpdate: this.handleUpdate
-    }
-
-    const fries = {
-        name: 'fries',
-        label: 'Size of fries',
-        value: this.state.values.fries,
-        options: [{ value: 'sm', text: 'Small' }, { value: 'md', text: 'Medium' }, { value: 'lg', text: 'Large' }],
+    const playback = {
+        name: 'playback',
+        label: 'Playback Controls',
+        value: this.state.values.playback,
+        options: [{ value: 'rewind', text: 'Rewind' }, { value: 'play', text: 'Play' }, { value: 'foward', text: 'FastForward' }],
         onUpdate: this.handleUpdate
     }
 
     return (
-        <form noValidate>
-            <Input {...firstName} />
-            <Textarea {...quote} />
-            <Select {...color} />
-            <div>
-                <Radio name={drink.name} value={drink.options[0].value} text={drink.options[0].text} checked={drink.value === drink.options[0].value} onUpdate={this.handleUpdate} />
-                <Radio name={drink.name} value={drink.options[1].value} text={drink.options[1].text} checked={drink.value === drink.options[1].value} onUpdate={this.handleUpdate} />
-                <Radio name={drink.name} value={drink.options[2].value} text={drink.options[2].text} checked={drink.value === drink.options[2].value} onUpdate={this.handleUpdate} />
+        <form noValidate style={{ marginBottom: '5em' }}>
+            <div className="card card-block">
+                <Input {...firstName} />
             </div>
-            <div>
-                <Checkbox name={fries.name} value={fries.options[0].value} text={fries.options[0].text} checked={fries.value[fries.options[0].value]} onUpdate={this.handleUpdate} />
-                <Checkbox name={fries.name} value={fries.options[1].value} text={fries.options[1].text} checked={fries.value[fries.options[1].value]} onUpdate={this.handleUpdate} />
-                <Checkbox name={fries.name} value={fries.options[2].value} text={fries.options[2].text} checked={fries.value[fries.options[2].value]} onUpdate={this.handleUpdate} />
+            <div className="card card-block">
+                <Textarea {...quote} />
+            </div>
+            <div className="card card-block">
+                <Select {...color} />
+            </div>
+            <div className="card card-block">
+                <label className="form-control-label">Pick your drink size</label>
+                <div className="c-inputs-stacked" style={{ marginBottom: '-1em'}}>
+                    <Radio name="drink" value="sm" text="Small" checked={this.state.values.drink === "sm"} onUpdate={this.handleUpdate} />
+                    <Radio name="drink" value="md" text="Medium" checked={this.state.values.drink === "md"} onUpdate={this.handleUpdate} />
+                    <Radio name="drink" value="lg" text="Large" checked={this.state.values.drink === "lg"} onUpdate={this.handleUpdate} />
+                </div>
+            </div>
+            <div className="card card-block">
+                <label className="form-control-label">Choose your best friends</label>
+                <div className="c-inputs-stacked" style={{ marginBottom: '-1em'}}>
+                    <Checkbox name="peeps" value="fred" text="Fred" checked={this.state.values.peeps.fred} onUpdate={this.handleUpdate} />
+                    <Checkbox name="peeps" value="james" text="James" checked={this.state.values.peeps.james} onUpdate={this.handleUpdate} />
+                    <Checkbox name="peeps" value="bill" text="Bill" checked={this.state.values.peeps.bill} onUpdate={this.handleUpdate} />
+                </div>
+            </div>
+            <div className="card card-block">
+                <RadioGroup {...playback} />
             </div>
         </form>
     )
@@ -72,27 +79,26 @@ function render() {
 function getInitialState() {
     return {
         values: {
-            fries: {}
+            peeps: {}
         }
     }
 }
 
-function handleUpdate(name, value, type) {
+function handleUpdate(name, value) {
 
-    console.log('form update:', type, name, value)
+    console.log('form update:', name, value)
 
-    let values = this.state.values
+    let state = Object.assign({}, this.state.values)
 
-    switch (type) {
+    switch (name) {
 
-        case 'checkbox':
-            values[name].value = !values[name].value
+        case 'peeps':
+            state.peeps[value] = !state.peeps[value]
             break;
 
         default:
-            values[name] = value
-
+            state[name] = value
     }
 
-    this.setState({ values: values })
+    this.setState({ values: state })
 }

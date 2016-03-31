@@ -3,7 +3,7 @@ import React from 'react'
 
 export default React.createClass({
     propTypes: {
-        id: React.PropTypes.string.isRequired,
+        id: React.PropTypes.string,
         text: React.PropTypes.string.isRequired,
         required: React.PropTypes.bool
     },

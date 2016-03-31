@@ -34,5 +34,5 @@ function render() {
 }
 
 function handleChange() {
-    this.props.onUpdate(this.props.name, this.props.value, 'checkbox')
+    this.props.onUpdate(this.props.name, this.props.value)
 }
