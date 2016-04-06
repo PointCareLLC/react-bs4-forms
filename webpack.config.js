@@ -19,8 +19,7 @@ module.exports = {
     },
     devServer: {
         port: args.port,
-        contentBase: args.outputPath,
-        stats: { colors: true }
+        contentBase: args.outputPath
     },
     resolve: {
         root: path.resolve(__dirname),
@@ -29,7 +28,7 @@ module.exports = {
         },
         extensions: ['', '.js', '.jsx']
     },
-    devtool: 'source-map',
+    devtool: 'eval-source-map',
     debug: true,
     module: {
         loaders: [
@@ -39,16 +38,8 @@ module.exports = {
             },
             {
                 test: /\.jsx?$/,
-                loader: 'react-hot',
+                loaders: ['react-hot', 'babel-loader?cacheDirectory'],
                 exclude: /node_modules/
-            },
-            {
-                test: /\.jsx?$/,
-                loader: "babel",
-                exclude: /node_modules/,
-                query: {
-                    cacheDirectory: true
-                }
             }
         ]
     }

@@ -3,7 +3,7 @@ import React from 'react'
 
 export default React.createClass({
     propTypes: {
-        forEl: React.PropTypes.string.isRequired,
+        id: React.PropTypes.string,
         text: React.PropTypes.string.isRequired,
         required: React.PropTypes.bool
     },
@@ -12,6 +12,6 @@ export default React.createClass({
 
 function render() {
     return (
-        <label htmlFor={this.props.forEl}>{this.props.text} {this.props.required ? '*' : undefined}</label>
+        <label htmlFor={this.props.id} className="form-control-label">{this.props.text} {this.props.required ? '*' : undefined}</label>
     )
 }

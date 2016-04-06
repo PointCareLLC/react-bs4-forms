@@ -1,85 +1,77 @@
 
 import React from 'react'
 
-import { Input, Textarea, Select, Checkbox, Radio } from '../../src'
+import { Input, Textarea, Select, Radio, Checkbox, RadioGroup } from '../../src'
 
 export default React.createClass({
     render,
     getInitialState,
-    handleChange
+    handleUpdate
 })
 
 function render() {
 
     const firstName = {
-        type: 'text',
-        placeholder: 'Tommy',
-        name: 'firstName',
+        name: 'firstname',
         label: 'First Name',
-        size: null,
-        required: true,
-        disabled: false,
-        value: this.state.values.firstName,
-        valid: null,
-        handleChange: this.handleChange
+        value: this.state.values.firstname,
+        onUpdate: this.handleUpdate
     }
 
-    const note = {
-        rows: '4',
-        placeholder: 'This is my note',
-        name: 'note',
-        label: 'Note',
-        size: null,
-        required: true,
-        disabled: false,
-        value: this.state.values.note,
-        valid: null,
-        handleChange: this.handleChange
-    }
-
-    const gender = {
-        name: 'gender',
-        label: 'Select Gender',
-        size: null,
-        required: true,
-        disabled: false,
-        value: this.state.values.gender,
-        valid: null,
-        handleChange: this.handleChange,
-        options: [{ value: 'm', text: 'Male' }, { value: 'f', text: 'Female' }, { value: 'o', text: 'Other' }]
+    const quote = {
+        name: 'favquote',
+        label: 'Favorite Quote',
+        value: this.state.values.favquote,
+        onUpdate: this.handleUpdate
     }
 
     const color = {
-        name: 'color',
+        name: 'favcolor',
         label: 'Favorite Color',
-        size: null,
-        required: true,
-        disabled: false,
-        value: this.state.values.color,
-        valid: null,
-        handleChange: this.handleChange,
-        options: [{ id: 'red', text: 'Red' }, { id: 'green', text: 'Green' }, { id: 'blue', text: 'Blue' }]
+        placeholder: 'Choose a color',
+        value: this.state.values.favcolor,
+        options: [{ value: 'red', text: 'Red' }, { value: 'blue', text: 'Blue' }, { value: 'green', text: 'Green' }],
+        onUpdate: this.handleUpdate
     }
 
-    const employed = {
-        name: 'employed',
-        label: 'Are you currently Employed?',
-        size: null,
-        required: true,
-        disabled: false,
-        value: this.state.values.employed,
-        valid: null,
-        handleChange: this.handleChange,
-        options: [{ value: 'yes', text: 'Yes' }, { value: 'no', text: 'No' }]
+    const playback = {
+        name: 'playback',
+        label: 'Playback Controls',
+        value: this.state.values.playback,
+        options: [{ value: 'rewind', text: 'Rewind' }, { value: 'play', text: 'Play' }, { value: 'foward', text: 'FastForward' }],
+        onUpdate: this.handleUpdate
     }
 
     return (
-        <form noValidate>
-            <Input {...firstName} />
-            <Textarea {...note} />
-            <Select {...gender} />
-            <Checkbox {...color} />
-            <Radio {...employed} />
+        <form noValidate style={{ marginBottom: '5em' }}>
+            <div className="card card-block">
+                <Input {...firstName} />
+            </div>
+            <div className="card card-block">
+                <Textarea {...quote} />
+            </div>
+            <div className="card card-block">
+                <Select {...color} />
+            </div>
+            <div className="card card-block">
+                <label className="form-control-label">Pick your drink size</label>
+                <div className="c-inputs-stacked" style={{ marginBottom: '-1em'}}>
+                    <Radio name="drink" value="sm" text="Small" checked={this.state.values.drink === "sm"} onUpdate={this.handleUpdate} />
+                    <Radio name="drink" value="md" text="Medium" checked={this.state.values.drink === "md"} onUpdate={this.handleUpdate} />
+                    <Radio name="drink" value="lg" text="Large" checked={this.state.values.drink === "lg"} onUpdate={this.handleUpdate} />
+                </div>
+            </div>
+            <div className="card card-block">
+                <label className="form-control-label">Choose your best friends</label>
+                <div className="c-inputs-stacked" style={{ marginBottom: '-1em'}}>
+                    <Checkbox name="peeps" value="fred" text="Fred" checked={this.state.values.peeps.fred} onUpdate={this.handleUpdate} />
+                    <Checkbox name="peeps" value="james" text="James" checked={this.state.values.peeps.james} onUpdate={this.handleUpdate} />
+                    <Checkbox name="peeps" value="bill" text="Bill" checked={this.state.values.peeps.bill} onUpdate={this.handleUpdate} />
+                </div>
+            </div>
+            <div className="card card-block">
+                <RadioGroup {...playback} />
+            </div>
         </form>
     )
 }
@@ -87,17 +79,26 @@ function render() {
 function getInitialState() {
     return {
         values: {
-            gender: 'm',
-            color: { 'green': true },
-            employed: 'no',
-            note: 'This is my note!',
-            firstName: 'Jimmy'
+            peeps: {}
         }
     }
 }
 
-function handleChange(name, value) {
-    var values = this.state.values
-    values[name] = value
-    this.setState({ values: values })
+function handleUpdate(name, value) {
+
+    console.log('form update:', name, value)
+
+    let state = Object.assign({}, this.state.values)
+
+    switch (name) {
+
+        case 'peeps':
+            state.peeps[value] = !state.peeps[value]
+            break;
+
+        default:
+            state[name] = value
+    }
+
+    this.setState({ values: state })
 }
