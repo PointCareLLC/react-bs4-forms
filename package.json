@@ -4,6 +4,7 @@
   "description": "A Bootstrap 4 forms library for React",
   "main": "index.js",
   "scripts": {
+	"build:lib": "./node_modules/.bin/babel --ignore *.spec.js src -d lib",
     "test": "npm run test:jest",
     "test:watch": "npm run test:jest -- --watch",
     "test:jest": "jest --verbose=true",
