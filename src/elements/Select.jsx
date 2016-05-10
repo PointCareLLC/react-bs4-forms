@@ -7,8 +7,7 @@ export default React.createClass({
         onUpdate: React.PropTypes.func.isRequired,
         options: React.PropTypes.array.isRequired,
         placeholder: React.PropTypes.string,
-        value: React.PropTypes.string,
-        disabled: React.PropTypes.bool
+        value: React.PropTypes.string
     },
     render,
     getDefaultProps,
@@ -16,22 +15,24 @@ export default React.createClass({
 })
 
 function render() {
-
-    const props = {
-        ref: 'el',
-        id: this.props.name,
-        name: this.props.name,
-        value: this.props.value,
-        disabled: this.props.disabled,
-        className: 'form-control c-select',
-        onChange: this.handleChange
-    }
-
     return (
-        <select {...props}>
+        <select
+			id={this.props.name}
+			{...this.props}
+			ref='el'
+			options={undefined}
+			placeholder={undefined}
+			onUpdate={undefined}
+			onChange={this.handleChange}>
             <option value=''>{this.props.placeholder}</option>
             {this.props.options.map(item => {
-                return <option key={item.value} value={item.value}>{item.text}</option>
+                return (
+					<option
+						key={item.value}
+						value={item.value}>
+						{item.text}
+					</option>
+				)
             })}
         </select>
     )
@@ -39,7 +40,8 @@ function render() {
 
 function getDefaultProps() {
     return {
-        placeholder: 'Select Option'
+        placeholder: 'Select Option',
+		className: 'form-control c-select'
     }
 }
 

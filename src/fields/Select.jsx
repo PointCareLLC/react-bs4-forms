@@ -12,7 +12,6 @@ export default React.createClass({
         options: React.PropTypes.array.isRequired,
         placeholder: React.PropTypes.string,
         value: React.PropTypes.string,
-        disabled: React.PropTypes.bool,
         valid: React.PropTypes.bool
     },
     render,
@@ -20,21 +19,14 @@ export default React.createClass({
 })
 
 function render() {
-
-    const selectProps = {
-        id: this.props.name,
-        name: this.props.name,
-        onUpdate: this.props.onUpdate,
-        options: this.props.options,
-        placeholder: this.props.placeholder,
-        value: this.props.value,
-        disabled: this.props.disabled
-    }
-
     return (
         <Fieldset valid={this.props.valid}>
-            <Label id={this.props.name} text={this.props.label} required={this.props.required} />
-            <Select {...selectProps} />
+            <Label
+				id={this.props.id || this.props.name}
+				text={this.props.label}
+				required={this.props.required}
+			/>
+			<Select {...this.props} />
         </Fieldset>
     )
 }

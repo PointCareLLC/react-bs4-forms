@@ -11,7 +11,6 @@ export default React.createClass({
         label: React.PropTypes.string.isRequired,
         options: React.PropTypes.array.isRequired,
         value: React.PropTypes.string,
-        disabled: React.PropTypes.bool,
         valid: React.PropTypes.bool
     },
     render,
@@ -21,7 +20,10 @@ export default React.createClass({
 function render() {
     return (
         <Fieldset valid={this.props.valid}>
-            <Label text={this.props.label} required={this.props.required} />
+            <Label
+				text={this.props.label}
+				required={this.props.required}
+			/>
             <div className="c-inputs-stacked" style={{ marginBottom: '-2em'}}>
                 {this.props.options.map(item => {
 
