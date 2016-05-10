@@ -1,8 +1,8 @@
 
 import React from 'react'
-import Label from '../elements/El-Label.jsx'
-import Fieldset from '../elements/El-Fieldset.jsx'
-import Radio from '../elements/El-Radio.jsx'
+import Label from '../elements/Label.jsx'
+import Fieldset from '../elements/Fieldset.jsx'
+import Radio from '../elements/Radio.jsx'
 
 export default React.createClass({
     propTypes: {

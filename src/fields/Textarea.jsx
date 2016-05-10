@@ -1,15 +1,15 @@
 
 import React from 'react'
-import Label from '../elements/El-Label.jsx'
-import Fieldset from '../elements/El-Fieldset.jsx'
-import Select from '../elements/El-Select.jsx'
+import Label from '../elements/Label.jsx'
+import Fieldset from '../elements/Fieldset.jsx'
+import Textarea from '../elements/Textarea.jsx'
 
 export default React.createClass({
     propTypes: {
         name: React.PropTypes.string.isRequired,
         onUpdate: React.PropTypes.func.isRequired,
         label: React.PropTypes.string.isRequired,
-        options: React.PropTypes.array.isRequired,
+        rows: React.PropTypes.string,
         placeholder: React.PropTypes.string,
         value: React.PropTypes.string,
         disabled: React.PropTypes.bool,
@@ -21,11 +21,11 @@ export default React.createClass({
 
 function render() {
 
-    const selectProps = {
+    const textareaProps = {
         id: this.props.name,
         name: this.props.name,
         onUpdate: this.props.onUpdate,
-        options: this.props.options,
+        rows: this.props.rows,
         placeholder: this.props.placeholder,
         value: this.props.value,
         disabled: this.props.disabled
@@ -34,7 +34,7 @@ function render() {
     return (
         <Fieldset valid={this.props.valid}>
             <Label id={this.props.name} text={this.props.label} required={this.props.required} />
-            <Select {...selectProps} />
+            <Textarea {...textareaProps} />
         </Fieldset>
     )
 }

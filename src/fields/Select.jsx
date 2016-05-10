@@ -1,15 +1,15 @@
 
 import React from 'react'
-import Label from '../elements/El-Label.jsx'
-import Fieldset from '../elements/El-Fieldset.jsx'
-import Input from '../elements/El-Input.jsx'
+import Label from '../elements/Label.jsx'
+import Fieldset from '../elements/Fieldset.jsx'
+import Select from '../elements/Select.jsx'
 
 export default React.createClass({
     propTypes: {
         name: React.PropTypes.string.isRequired,
         onUpdate: React.PropTypes.func.isRequired,
         label: React.PropTypes.string.isRequired,
-        type: React.PropTypes.string,
+        options: React.PropTypes.array.isRequired,
         placeholder: React.PropTypes.string,
         value: React.PropTypes.string,
         disabled: React.PropTypes.bool,
@@ -21,11 +21,11 @@ export default React.createClass({
 
 function render() {
 
-    const inputProps = {
+    const selectProps = {
         id: this.props.name,
         name: this.props.name,
         onUpdate: this.props.onUpdate,
-        type: this.props.type,
+        options: this.props.options,
         placeholder: this.props.placeholder,
         value: this.props.value,
         disabled: this.props.disabled
@@ -34,7 +34,7 @@ function render() {
     return (
         <Fieldset valid={this.props.valid}>
             <Label id={this.props.name} text={this.props.label} required={this.props.required} />
-            <Input {...inputProps} />
+            <Select {...selectProps} />
         </Fieldset>
     )
 }
