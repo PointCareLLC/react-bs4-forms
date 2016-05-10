@@ -4,11 +4,7 @@ import React from 'react'
 export default React.createClass({
     propTypes: {
         name: React.PropTypes.string.isRequired,
-        onUpdate: React.PropTypes.func.isRequired,
-        type: React.PropTypes.string,
-        placeholder: React.PropTypes.string,
-        value: React.PropTypes.string,
-        disabled: React.PropTypes.bool
+        onUpdate: React.PropTypes.func.isRequired
     },
     render,
     getDefaultProps,
@@ -16,28 +12,22 @@ export default React.createClass({
 })
 
 function render() {
-
-    const props = {
-        ref: 'el',
-        id: this.props.name,
-        name: this.props.name,
-        type: this.props.type,
-        placeholder: this.props.placeholder,
-        value: this.props.value,
-        disabled: this.props.disabled,
-        className: 'form-control'
-    }
-
     return (
-        <input {...props} onChange={this.handleChange} />
+        <input
+			ref='el'
+			id={this.props.id || this.props.name}
+			onChange={this.handleChange}
+			{...this.props}
+			onUpdate={undefined}
+		/>
     )
 }
 
 function getDefaultProps() {
     return {
-        value: '',
         type: 'text',
-        disabled: false
+        disabled: false,
+		className: 'form-control'
     }
 }
 

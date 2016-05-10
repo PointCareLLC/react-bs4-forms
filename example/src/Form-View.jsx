@@ -15,7 +15,8 @@ function render() {
         name: 'firstname',
         label: 'First Name',
         value: this.state.values.firstname,
-        onUpdate: this.handleUpdate
+        onUpdate: this.handleUpdate,
+		maxLength: 5
     }
 
     const quote = {
