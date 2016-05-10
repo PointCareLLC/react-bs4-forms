@@ -14,10 +14,10 @@ export default React.createClass({
 function render() {
     return (
         <input
-			ref='el'
-			id={this.props.id || this.props.name}
-			onChange={this.handleChange}
+			id={this.props.name}
 			{...this.props}
+			ref='el'
+			onChange={this.handleChange}
 			onUpdate={undefined}
 		/>
     )

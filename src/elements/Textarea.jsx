@@ -14,11 +14,11 @@ export default React.createClass({
 function render() {
     return (
 		<textarea
-			ref='el'
-			id={this.props.id || this.props.name}
-			onChange={this.handleChange}
+			id={this.props.name}
 			{...this.props}
+			ref='el'
 			onUpdate={undefined}
+			onChange={this.handleChange}
 		/>
     )
 }

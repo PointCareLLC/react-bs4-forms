@@ -10,7 +10,6 @@ export default React.createClass({
         onUpdate: React.PropTypes.func.isRequired,
         label: React.PropTypes.string.isRequired,
         options: React.PropTypes.array.isRequired,
-        placeholder: React.PropTypes.string,
         value: React.PropTypes.string,
         disabled: React.PropTypes.bool,
         valid: React.PropTypes.bool

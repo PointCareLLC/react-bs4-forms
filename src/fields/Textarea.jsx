@@ -8,7 +8,12 @@ export default React.createClass({
     propTypes: {
         name: React.PropTypes.string.isRequired,
         onUpdate: React.PropTypes.func.isRequired,
-		label: React.PropTypes.string.isRequired
+		label: React.PropTypes.string.isRequired,
+		rows: React.PropTypes.string,
+        placeholder: React.PropTypes.string,
+        value: React.PropTypes.string,
+        disabled: React.PropTypes.bool,
+        valid: React.PropTypes.bool
     },
     render,
     shouldComponentUpdate

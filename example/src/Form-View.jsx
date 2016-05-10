@@ -87,7 +87,7 @@ function getInitialState() {
 
 function handleUpdate(name, value) {
 
-    console.log('form update:', name, value)
+	console.log(`field update -> ${name}: ${value}`)
 
     let state = Object.assign({}, this.state.values)
 
