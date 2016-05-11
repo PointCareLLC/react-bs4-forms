@@ -10,21 +10,21 @@ export default React.createClass({
         value: React.PropTypes.string
     },
     render,
-    getDefaultProps,
     handleChange
 })
 
 function render() {
+
+	const { onUpdate, placeholder, options, ...selectProps } = this.props
+
     return (
         <select
 			id={this.props.name}
-			{...this.props}
+			className="form-control c-select"
+			{...selectProps}
 			ref='el'
-			options={undefined}
-			placeholder={undefined}
-			onUpdate={undefined}
 			onChange={this.handleChange}>
-            <option value=''>{this.props.placeholder}</option>
+            <option value=''>{this.props.placeholder || 'Select Option'}</option>
             {this.props.options.map(item => {
                 return (
 					<option
@@ -36,13 +36,6 @@ function render() {
             })}
         </select>
     )
-}
-
-function getDefaultProps() {
-    return {
-        placeholder: 'Select Option',
-		className: 'form-control c-select'
-    }
 }
 
 function handleChange() {

@@ -27,7 +27,7 @@ function render() {
             <div className="c-inputs-stacked" style={{ marginBottom: '-2em'}}>
                 {this.props.options.map(item => {
 
-                    const props = {
+                    const elProps = {
                         name: this.props.name,
                         onUpdate: this.props.onUpdate,
                         disabled: this.props.disabled,
@@ -36,7 +36,7 @@ function render() {
                         checked: item.value === this.props.value
                     }
 
-                    return <Radio key={item.value} {...props} />
+                    return <Radio key={item.value} {...elProps} />
                 })}
             </div>
         </Fieldset>

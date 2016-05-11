@@ -17,6 +17,9 @@ export default React.createClass({
 })
 
 function render() {
+
+	const { label, valid, ...elProps } = this.props
+
     return (
 		<Fieldset valid={this.props.valid}>
 			<Label
@@ -24,7 +27,7 @@ function render() {
 				text={this.props.label}
 				required={this.props.required}
 			/>
-			<Textarea {...this.props} />
+		<Textarea {...elProps} />
 		</Fieldset>
     )
 }

@@ -7,28 +7,23 @@ export default React.createClass({
         onUpdate: React.PropTypes.func.isRequired
     },
     render,
-    getDefaultProps,
     handleChange
 })
 
 function render() {
+
+	const { onUpdate, ...inputProps } = this.props
+
     return (
 		<textarea
-			id={this.props.name}
-			{...this.props}
+			id={inputProps.name}
+			rows="3"
+			className="form-control"
+			{...inputProps}
 			ref='el'
-			onUpdate={undefined}
 			onChange={this.handleChange}
 		/>
     )
-}
-
-function getDefaultProps() {
-    return {
-        rows: '3',
-        disabled: false,
-		className: 'form-control'
-    }
 }
 
 function handleChange() {

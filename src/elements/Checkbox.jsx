@@ -9,29 +9,25 @@ export default React.createClass({
 		text: React.PropTypes.string.isRequired
     },
     render,
-    handleChange,
-	getDefaultProps
+    handleChange
 })
 
 function render() {
+
+	const { onUpdate, text, ...inputProps } = this.props
+
     return (
         <label className="c-input c-checkbox">
             <input
-				id={this.props.name}
-				{...this.props}
-				onUpdate={undefined}
+				id={inputProps.name}
+				{...inputProps}
+				type="checkbox"
 				onChange={this.handleChange}
 			/>
             <span className="c-indicator"></span>
             {this.props.text}
         </label>
     )
-}
-
-function getDefaultProps() {
-	return {
-		type: 'checkbox'
-	}
 }
 
 function handleChange() {

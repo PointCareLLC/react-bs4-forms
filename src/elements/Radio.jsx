@@ -13,13 +13,15 @@ export default React.createClass({
 })
 
 function render() {
+
+	const { onUpdate, text, ...inputProps } = this.props
+
     return (
 		<label className="c-input c-radio">
 			<input
-				id={`${this.props.name}-${this.props.value}`}
-				{...this.props}
+				id={`${inputProps.name}-${inputProps.value}`}
+				{...inputProps}
 				type='radio'
-				onUpdate={undefined}
 				onChange={this.handleChange}
 			/>
 			<span className="c-indicator"></span>

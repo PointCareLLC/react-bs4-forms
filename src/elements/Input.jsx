@@ -7,28 +7,23 @@ export default React.createClass({
         onUpdate: React.PropTypes.func.isRequired
     },
     render,
-    getDefaultProps,
     handleChange
 })
 
 function render() {
+
+	const { onUpdate, ...inputProps } = this.props
+
     return (
         <input
-			id={this.props.name}
-			{...this.props}
+			id={inputProps.name}
+			type="text"
+			className="form-control"
+			{...inputProps}
 			ref='el'
 			onChange={this.handleChange}
-			onUpdate={undefined}
 		/>
     )
-}
-
-function getDefaultProps() {
-    return {
-        type: 'text',
-        disabled: false,
-		className: 'form-control'
-    }
 }
 
 function handleChange() {
