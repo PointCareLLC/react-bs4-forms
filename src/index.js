@@ -1,10 +1,10 @@
 
-import _Input from './fields/Input.jsx'
-import _Textarea from './fields/Textarea.jsx'
-import _Select from './fields/Select.jsx'
-import _Checkbox from './elements/Checkbox.jsx'
-import _Radio from './elements/Radio.jsx'
-import _RadioGroup from './fields/RadioGroup.jsx'
+import _Input from './fields/Input'
+import _Textarea from './fields/Textarea'
+import _Select from './fields/Select'
+import _Checkbox from './elements/Checkbox'
+import _Radio from './elements/Radio'
+import _RadioGroup from './fields/RadioGroup'
 
 export const Input = _Input
 export const Textarea = _Textarea

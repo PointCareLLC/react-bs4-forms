@@ -23,9 +23,6 @@ module.exports = {
     },
     resolve: {
         root: path.resolve(__dirname),
-        alias: {
-            'ez-js-library': 'src'
-        },
         extensions: ['', '.js', '.jsx']
     },
     devtool: 'eval-source-map',

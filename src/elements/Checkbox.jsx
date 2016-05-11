@@ -6,31 +6,32 @@ export default React.createClass({
         name: React.PropTypes.string.isRequired,
         onUpdate: React.PropTypes.func.isRequired,
         value: React.PropTypes.string.isRequired,
-        checked: React.PropTypes.bool,
-        disabled: React.PropTypes.bool
+		text: React.PropTypes.string.isRequired
     },
     render,
-    handleChange
+    handleChange,
+	getDefaultProps
 })
 
 function render() {
-
-    const props = {
-        id: this.props.name,
-        name: this.props.name,
-        type: 'checkbox',
-        checked: this.props.checked,
-        disabled: this.props.disabled,
-        onChange: this.handleChange
-    }
-
     return (
         <label className="c-input c-checkbox">
-            <input {...props} />
+            <input
+				id={this.props.name}
+				{...this.props}
+				onUpdate={undefined}
+				onChange={this.handleChange}
+			/>
             <span className="c-indicator"></span>
             {this.props.text}
         </label>
     )
+}
+
+function getDefaultProps() {
+	return {
+		type: 'checkbox'
+	}
 }
 
 function handleChange() {

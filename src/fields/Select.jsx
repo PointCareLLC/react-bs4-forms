@@ -1,8 +1,8 @@
 
 import React from 'react'
-import Label from '../elements/Label.jsx'
-import Fieldset from '../elements/Fieldset.jsx'
-import Select from '../elements/Select.jsx'
+import Label from '../elements/Label'
+import Fieldset from '../elements/Fieldset'
+import Select from '../elements/Select'
 
 export default React.createClass({
     propTypes: {

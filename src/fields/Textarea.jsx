@@ -1,8 +1,8 @@
 
 import React from 'react'
-import Label from '../elements/Label.jsx'
-import Fieldset from '../elements/Fieldset.jsx'
-import Textarea from '../elements/Textarea.jsx'
+import Label from '../elements/Label'
+import Fieldset from '../elements/Fieldset'
+import Textarea from '../elements/Textarea'
 
 export default React.createClass({
     propTypes: {
