@@ -1,5 +1,5 @@
 {
-  "name": "react-bs4-forms",
+  "name": "@pointcare/react-bs4-forms",
   "version": "1.0.0",
   "description": "A Bootstrap 4 forms library for React",
   "main": "index.js",
@@ -8,7 +8,10 @@
     "test": "npm run test:jest",
     "test:watch": "npm run test:jest -- --watch",
     "test:jest": "jest --verbose=true",
-    "dev": "webpack-dev-server --hot --inline"
+    "dev": "webpack-dev-server --hot --inline",
+	"prepublish": "npm run build:lib",
+    "preversion": "npm test",
+    "postversion": "git push && git push --tags"
   },
   "repository": {
     "type": "git",
