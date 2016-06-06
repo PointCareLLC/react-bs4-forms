@@ -1,48 +1,48 @@
 
-import React from 'react'
+import React from 'react';
 
-import { Input, Textarea, Select, Radio, Checkbox, RadioGroup } from '../../src'
+import { Input, Textarea, Select, Radio, Checkbox, RadioGroup } from '../../src';
 
 export default React.createClass({
-    render,
-    getInitialState,
-    handleUpdate
-})
+	render,
+	getInitialState,
+	handleUpdate
+});
 
 function render() {
 
-    const firstName = {
-        name: 'firstname',
-        label: 'First Name',
-        value: this.state.values.firstname,
-        onUpdate: this.handleUpdate
-    }
+	const firstName = {
+		name: 'firstname',
+		label: 'First Name',
+		value: this.state.values.firstname,
+		onUpdate: this.handleUpdate
+	};
 
-    const quote = {
-        name: 'favquote',
-        label: 'Favorite Quote',
-        value: this.state.values.favquote,
-        onUpdate: this.handleUpdate
-    }
+	const quote = {
+		name: 'favquote',
+		label: 'Favorite Quote',
+		value: this.state.values.favquote,
+		onUpdate: this.handleUpdate
+	};
 
-    const color = {
-        name: 'favcolor',
-        label: 'Favorite Color',
-        placeholder: 'Choose a color',
-        value: this.state.values.favcolor,
-        options: [{ value: 'red', text: 'Red' }, { value: 'blue', text: 'Blue' }, { value: 'green', text: 'Green' }],
-        onUpdate: this.handleUpdate
-    }
+	const color = {
+		name: 'favcolor',
+		label: 'Favorite Color',
+		placeholder: 'Choose a color',
+		value: this.state.values.favcolor,
+		options: [{ value: 'red', text: 'Red' }, { value: 'blue', text: 'Blue' }, { value: 'green', text: 'Green' }],
+		onUpdate: this.handleUpdate
+	};
 
-    const playback = {
-        name: 'playback',
-        label: 'Playback Controls',
-        value: this.state.values.playback,
-        options: [{ value: 'rewind', text: 'Rewind' }, { value: 'play', text: 'Play' }, { value: 'foward', text: 'FastForward' }],
-        onUpdate: this.handleUpdate
-    }
+	const playback = {
+		name: 'playback',
+		label: 'Playback Controls',
+		value: this.state.values.playback,
+		options: [{ value: 'rewind', text: 'Rewind' }, { value: 'play', text: 'Play' }, { value: 'foward', text: 'FastForward' }],
+		onUpdate: this.handleUpdate
+	};
 
-    return (
+	return (
         <form noValidate style={{ marginBottom: '5em' }}>
             <div className="card card-block">
                 <Input {...firstName} />
@@ -55,11 +55,11 @@ function render() {
             </div>
             <div className="card card-block">
                 <label className="form-control-label">Pick your drink size</label>
-                <div className="c-inputs-stacked" style={{ marginBottom: '-1em'}}>
-                    <Radio name="drink" value="sm" text="Small" checked={this.state.values.drink === "sm"} onUpdate={this.handleUpdate} />
-                    <Radio name="drink" value="md" text="Medium" checked={this.state.values.drink === "md"} onUpdate={this.handleUpdate} />
-                    <Radio name="drink" value="lg" text="Large" checked={this.state.values.drink === "lg"} onUpdate={this.handleUpdate} />
-                </div>
+				<div className="c-inputs-stacked" style={{ marginBottom: '-1em'}}>
+					<Radio name="drink" value="sm" text="Small" checked={this.state.values.drink === 'sm'} onUpdate={this.handleUpdate} />
+					<Radio name="drink" value="md" text="Medium" checked={this.state.values.drink === 'md'} onUpdate={this.handleUpdate} />
+					<Radio name="drink" value="lg" text="Large" checked={this.state.values.drink === 'lg'} onUpdate={this.handleUpdate} />
+				</div>
             </div>
             <div className="card card-block">
                 <label className="form-control-label">Choose your best friends</label>
@@ -73,32 +73,32 @@ function render() {
                 <RadioGroup {...playback} />
             </div>
         </form>
-    )
+    );
 }
 
 function getInitialState() {
-    return {
-        values: {
-            peeps: {}
-        }
-    }
+	return {
+		values: {
+			peeps: {}
+		}
+	};
 }
 
 function handleUpdate(name, value) {
 
-	console.log(`field update -> ${name}: ${value}`)
+	console.log(`field update -> ${name}: ${value}`);
 
-    let state = Object.assign({}, this.state.values)
+	let state = Object.assign({}, this.state.values);
 
-    switch (name) {
+	switch (name) {
 
-        case 'peeps':
-            state.peeps[value] = !state.peeps[value]
-            break;
+	case 'peeps':
+		state.peeps[value] = !state.peeps[value];
+		break;
 
-        default:
-            state[name] = value
-    }
+	default:
+		state[name] = value;
+	}
 
-    this.setState({ values: state })
+	this.setState({ values: state });
 }
