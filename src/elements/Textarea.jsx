@@ -1,20 +1,20 @@
 
-import React from 'react'
+import React from 'react';
 
 export default React.createClass({
-    propTypes: {
-        name: React.PropTypes.string.isRequired,
-        onUpdate: React.PropTypes.func.isRequired
-    },
-    render,
-    handleChange
-})
+	propTypes: {
+		name: React.PropTypes.string.isRequired,
+		onUpdate: React.PropTypes.func.isRequired
+	},
+	render,
+	handleChange
+});
 
 function render() {
 
-	const { onUpdate, ...inputProps } = this.props
+	const { onUpdate, ...inputProps } = this.props;
 
-    return (
+	return (
 		<textarea
 			id={inputProps.name}
 			rows="3"
@@ -23,9 +23,9 @@ function render() {
 			ref='el'
 			onChange={this.handleChange}
 		/>
-    )
+    );
 }
 
 function handleChange() {
-    this.props.onUpdate(this.props.name, this.refs.el.value)
+	this.props.onUpdate(this.props.name, this.refs.el.value);
 }
