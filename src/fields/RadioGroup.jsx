@@ -9,6 +9,7 @@ export default React.createClass({
 		name: React.PropTypes.string.isRequired,
 		onUpdate: React.PropTypes.func.isRequired,
 		label: React.PropTypes.string.isRequired,
+		labelHide: React.PropTypes.bool,
 		options: React.PropTypes.array.isRequired,
 		value: React.PropTypes.string,
 		valid: React.PropTypes.bool
@@ -23,6 +24,7 @@ function render() {
             <Label
 				text={this.props.label}
 				required={this.props.required}
+				hide={this.props.labelHide}
 			/>
             <div className="c-inputs-stacked" style={{ marginBottom: '-2em'}}>
 				{this.props.options.map(item => {

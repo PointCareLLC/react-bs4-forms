@@ -14,6 +14,8 @@ function render() {
 	const firstName = {
 		name: 'firstname',
 		label: 'First Name',
+		placeholder: 'First Name',
+		labelHide: true,
 		value: this.state.values.firstname,
 		onUpdate: this.handleUpdate
 	};

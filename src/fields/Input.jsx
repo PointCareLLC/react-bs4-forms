@@ -9,6 +9,7 @@ export default React.createClass({
 		name: React.PropTypes.string.isRequired,
 		onUpdate: React.PropTypes.func.isRequired,
 		label: React.PropTypes.string.isRequired,
+		labelHide: React.PropTypes.bool,
 		value: React.PropTypes.string,
 		valid: React.PropTypes.bool
 	},
@@ -26,6 +27,7 @@ function render() {
 				id={this.props.id || this.props.name}
 				text={this.props.label}
 				required={this.props.required}
+				hide={this.props.labelHide}
 			/>
 		<Input {...elProps} />
         </Fieldset>
