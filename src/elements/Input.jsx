@@ -18,7 +18,7 @@ function render() {
         <input
 			id={inputProps.name}
 			type="text"
-			className="form-control"
+			className={getClass(inputProps.valid)}
 			{...inputProps}
 			ref='el'
 			onChange={this.handleChange}
@@ -28,4 +28,18 @@ function render() {
 
 function handleChange() {
 	this.props.onUpdate(this.props.name, this.refs.el.value);
+}
+
+function getClass(valid) {
+	switch (valid) {
+
+	case (true):
+		return 'form-control form-control-success';
+
+	case (false):
+		return 'form-control form-control-danger';
+
+	default:
+		return 'form-control';
+	}
 }

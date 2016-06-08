@@ -15,15 +15,17 @@ function render() {
 		name: 'firstname',
 		label: 'First Name',
 		placeholder: 'First Name',
-		labelHide: true,
 		value: this.state.values.firstname,
-		onUpdate: this.handleUpdate
+		onUpdate: this.handleUpdate,
+		valid: true
 	};
 
 	const quote = {
 		name: 'favquote',
 		label: 'Favorite Quote',
+		placeholder: 'Favorite Quote',
 		value: this.state.values.favquote,
+		labelHide: true,
 		onUpdate: this.handleUpdate
 	};
 
@@ -33,7 +35,8 @@ function render() {
 		placeholder: 'Choose a color',
 		value: this.state.values.favcolor,
 		options: [{ value: 'red', text: 'Red' }, { value: 'blue', text: 'Blue' }, { value: 'green', text: 'Green' }],
-		onUpdate: this.handleUpdate
+		onUpdate: this.handleUpdate,
+		valid: false
 	};
 
 	const playback = {

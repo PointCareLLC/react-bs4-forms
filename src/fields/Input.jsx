@@ -19,7 +19,7 @@ export default React.createClass({
 
 function render() {
 
-	const { label, valid, ...elProps } = this.props;
+	const { label, ...elProps } = this.props;
 
 	return (
         <Fieldset valid={this.props.valid}>
