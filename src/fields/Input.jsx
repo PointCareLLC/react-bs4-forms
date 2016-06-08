@@ -35,5 +35,5 @@ function render() {
 }
 
 function shouldComponentUpdate(nextProps) {
-	return (nextProps.value !== this.props.value || nextProps.valid !== this.props.valid);
+	return (nextProps.value !== this.props.value || nextProps.valid !== this.props.valid || nextProps.disabled !== this.props.disabled);
 }
