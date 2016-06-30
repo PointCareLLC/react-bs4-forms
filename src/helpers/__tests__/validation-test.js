@@ -1,4 +1,4 @@
-import {input} from '../validation';
+import {input, isEmpty, validationToShow} from '../validation';
 
 jest.unmock('../validation');
 
@@ -190,4 +190,197 @@ describe('validation.input', function(){
 		});
 
 	});
+});
+
+describe('validation.isEmpty', function() {
+	var value = null;
+
+	it('should return true if value is a string of length 0', function(){
+		value = '';
+		var result = isEmpty(value);
+
+		expect(result).toBe(true);
+	});
+
+	it('should return false if value is a string with length > 0', function(){
+		value = 'hello';
+		var result = isEmpty(value);
+
+		expect(result).toBe(false);
+	});
+
+	it('should return true if value is null', function(){
+		value = null;
+		var result = isEmpty(value);
+
+		expect(result).toBe(true);
+	});
+
+	it('should return true if value is undefined', function(){
+		value = undefined;
+		var result = isEmpty(value);
+
+		expect(result).toBe(true);
+	});
+
+	it('should return false if value is 0', function(){
+		value = 0;
+		var result = isEmpty(value);
+
+		expect(result).toBe(false);
+	});
+
+});
+
+describe( 'validation.validationToShow', function() {
+	var valid = null;
+	var required = null;
+	var value = null;
+	var didBlur = null;
+	beforeEach(function () {
+		value = 'somevalue';
+	});
+
+	describe( 'when required', function() {
+
+		beforeEach(function () {
+			required = true;
+		});
+
+		describe( 'if empty', function() {
+
+			beforeEach(function () {
+				value = '';
+			});
+
+			it( 'should return undef if not blurred', function() {
+				didBlur = false;
+				var result = validationToShow(value, valid, didBlur, required);
+				expect(result).toBe(undefined);
+
+			});
+
+			it( 'should return false if blurred', function() {
+				didBlur = true;
+				var result = validationToShow(value, valid, didBlur, required);
+				expect(result).toBe(false);
+			});
+
+		});
+
+		describe( 'if valid input', function() {
+
+			beforeEach(function () {
+				valid = true;
+			});
+
+			it( 'should return undef if not blurred', function() {
+				didBlur = false;
+				var result = validationToShow(value, valid, didBlur, required);
+				expect(result).toBe(undefined);
+
+			});
+
+			it( 'should return true if blurred', function() {
+				didBlur = true;
+				var result = validationToShow(value, valid, didBlur, required);
+				expect(result).toBe(true);
+			});
+
+		});
+
+		describe( 'if invalid input', function() {
+
+			beforeEach(function () {
+				valid = false;
+			});
+
+			it( 'should return undef if not blurred', function() {
+				didBlur = false;
+				var result = validationToShow(value, valid, didBlur, required);
+				expect(result).toBe(undefined);
+
+			});
+
+			it( 'should return false if blurred', function() {
+				didBlur = true;
+				var result = validationToShow(value, valid, didBlur, required);
+				expect(result).toBe(false);
+			});
+
+		});
+
+	});
+
+	describe( 'when not required', function() {
+
+		beforeEach(function () {
+			required = false;
+		});
+
+		describe( 'if empty', function() {
+
+			beforeEach(function () {
+				value = '';
+			});
+
+			it( 'should return undef if not blurred', function() {
+				didBlur = false;
+				var result = validationToShow(value, valid, didBlur, required);
+				expect(result).toBe(undefined);
+
+			});
+
+			it( 'should return undef if blurred', function() {
+				didBlur = true;
+				var result = validationToShow(value, valid, didBlur, required);
+				expect(result).toBe(undefined);
+			});
+
+		});
+
+		describe( 'if valid input', function() {
+
+			beforeEach(function () {
+				valid = true;
+			});
+
+			it( 'should return undef if not blurred', function() {
+				didBlur = false;
+				var result = validationToShow(value, valid, didBlur, required);
+				expect(result).toBe(undefined);
+
+			});
+
+			it( 'should return true if blurred', function() {
+				didBlur = true;
+				var result = validationToShow(value, valid, didBlur, required);
+				expect(result).toBe(true);
+			});
+
+		});
+
+		describe( 'if invalid input', function() {
+
+			beforeEach(function () {
+				valid = false;
+			});
+
+			it( 'should return undef if not blurred', function() {
+				didBlur = false;
+				var result = validationToShow(value, valid, didBlur, required);
+				expect(result).toBe(undefined);
+
+			});
+
+			it( 'should return false if blurred', function() {
+				didBlur = true;
+				var result = validationToShow(value, valid, didBlur, required);
+				expect(result).toBe(false);
+			});
+
+		});
+
+	});
+
 });

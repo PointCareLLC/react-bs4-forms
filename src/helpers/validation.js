@@ -29,3 +29,30 @@ export const input = function (value, required, validator) {
 	}
 
 };
+
+export const isEmpty = function(value){
+	if(value === undefined || value === null || value === ''){
+		return true;
+	}
+	else{
+		return false;
+	}
+};
+
+export const validationToShow = function(value, valid, didBlur, required) {
+	if(didBlur){
+		var displayValid = valid;
+
+		if (required && isEmpty(value)) {
+			displayValid = false;
+		}
+		else if (isEmpty(value)) {
+			displayValid = undefined;
+		}
+	}
+	else{
+		displayValid = undefined;
+	}
+
+	return displayValid;
+};

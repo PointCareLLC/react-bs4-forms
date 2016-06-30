@@ -15,9 +15,9 @@ function render() {
 		name: 'firstname',
 		label: 'First Name',
 		placeholder: 'First Name',
-		value: this.state.values.firstname,
 		onUpdate: this.handleUpdate,
-		valid: true
+		required: false,
+		validator: (value) => (value.match(/^\d{3}-?\d{2}-?\d{4}$/) ? true : false )
 	};
 
 	const quote = {
