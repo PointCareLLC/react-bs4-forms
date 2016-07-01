@@ -16,7 +16,8 @@ function render() {
 		label: 'First Name',
 		placeholder: 'First Name',
 		onUpdate: this.handleUpdate,
-		required: false
+		required: true,
+		value: 'Richard'
 	};
 
 	const quote = {

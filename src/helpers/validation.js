@@ -1,7 +1,6 @@
-
 export const input = function (value, required, validator) {
-	if (typeof validator !== 'function'){
-		if(required){
+	if (typeof validator !== 'function') {
+		if(required) {
 			return value ? true : false;
 		}
 		else {
@@ -9,9 +8,8 @@ export const input = function (value, required, validator) {
 		}
 	}
 	else {
-
-		if(required){
-			if(value === undefined || value === null || value === ''){
+		if(required) {
+			if(value === undefined || value === null || value === '') {
 				return false;
 			}
 			else {
@@ -19,7 +17,7 @@ export const input = function (value, required, validator) {
 			}
 		}
 		else {
-			if(value === undefined || value === null || value === ''){
+			if(value === undefined || value === null || value === '') {
 				return true;
 			}
 			else {
@@ -27,11 +25,10 @@ export const input = function (value, required, validator) {
 			}
 		}
 	}
-
 };
 
-export const isEmpty = function(value){
-	if(value === undefined || value === null || value === ''){
+export const isEmpty = function(value) {
+	if(value === undefined || value === null || value === '') {
 		return true;
 	}
 	else{
@@ -40,7 +37,7 @@ export const isEmpty = function(value){
 };
 
 export const validationToShow = function(value, valid, didBlur, required) {
-	if(didBlur){
+	if(didBlur) {
 		var displayValid = valid;
 
 		if (required && isEmpty(value)) {

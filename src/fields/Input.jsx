@@ -29,11 +29,12 @@ function getDefaultProps() {
 		value: ''
 	};
 }
+
 function componentWillMount() {
 	this.setState({valid: this.props.valid, value: this.props.value});
 }
 
-function getInitialState(){
+function getInitialState() {
 	return {
 		value: '',
 		valid: false,
@@ -42,13 +43,12 @@ function getInitialState(){
 }
 
 function onBlur() {
-	if(!this.state.didBlur){
+	if(!this.state.didBlur) {
 		this.setState( {didBlur: true });
 	}
 }
 
 function render() {
-
 	var displayValid = validationToShow(this.state.value, this.state.valid, this.state.didBlur, this.props.required);
 
 	const { label, onUpdate, value, ...elProps } = this.props;
@@ -73,9 +73,7 @@ function render() {
 }
 
 function handleUpdate(name, value) {
-
 	var valid = validationHelper(value, this.props.required, this.props.validator);
-
 	var newState = {
 		value: value || '',
 		valid: valid
@@ -83,5 +81,4 @@ function handleUpdate(name, value) {
 
 	this.props.onUpdate(name, (valid ? value : null), valid);
 	this.setState(newState);
-
 }
