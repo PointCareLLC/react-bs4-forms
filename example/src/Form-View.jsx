@@ -16,8 +16,7 @@ function render() {
 		label: 'First Name',
 		placeholder: 'First Name',
 		onUpdate: this.handleUpdate,
-		required: false,
-		validator: (value) => (value.match(/^\d{3}-?\d{2}-?\d{4}$/) ? true : false )
+		required: false
 	};
 
 	const quote = {
@@ -35,8 +34,7 @@ function render() {
 		placeholder: 'Choose a color',
 		value: this.state.values.favcolor,
 		options: [{ value: 'red', text: 'Red' }, { value: 'blue', text: 'Blue' }, { value: 'green', text: 'Green' }],
-		onUpdate: this.handleUpdate,
-		valid: false
+		onUpdate: this.handleUpdate
 	};
 
 	const playback = {
