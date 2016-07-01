@@ -1,7 +1,10 @@
 
 import React from 'react';
 
-import { Input, Textarea, Select, Radio, Checkbox, RadioGroup } from '../../src';
+import { Radio, Checkbox, RadioGroup } from '../../src';
+import Input from '../../src/whatever/Input';
+import Textarea from '../../src/whatever/Textarea';
+import Select from '../../src/whatever/Select';
 
 export default React.createClass({
 	render,
@@ -26,6 +29,7 @@ function render() {
 		placeholder: 'Favorite Quote',
 		value: this.state.values.favquote,
 		labelHide: true,
+		required: true,
 		onUpdate: this.handleUpdate
 	};
 
