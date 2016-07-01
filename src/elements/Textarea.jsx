@@ -6,9 +6,16 @@ export default React.createClass({
 		name: React.PropTypes.string.isRequired,
 		onUpdate: React.PropTypes.func.isRequired
 	},
+	getDefaultProps,
 	render,
 	handleChange
 });
+
+function getDefaultProps() {
+	return {
+		value: ''
+	};
+}
 
 function render() {
 
