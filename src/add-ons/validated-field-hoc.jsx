@@ -1,6 +1,6 @@
 
 import React from 'react';
-import {input as validationHelper, validationToShow} from '../helpers/validation';
+import {input as validationHelper, validationToShow, isEmpty} from '../helpers/validation';
 
 export default function (Component) {
 
@@ -14,14 +14,14 @@ export default function (Component) {
 			validator: React.PropTypes.func
 		},
 		render() {
-			var displayValid = validationToShow(this.state.value, this.state.valid, this.state.didBlur, this.props.required);
+
 			const { onUpdate, value, ...elProps } = this.props;
 
 			return (
 				<Component
 					{...elProps}
 					value = {this.state.value}
-					valid = {displayValid}
+					valid = {validationToShow(this.state.value, this.state.valid, this.state.showValid, this.props.required)}
 					onUpdate = {this.handleUpdate}
 					onBlur = {this.onBlur}
 					/>
@@ -34,25 +34,29 @@ export default function (Component) {
 		},
 		getInitialState() {
 			return {
-				value: '',
-				valid: false,
-				didBlur: false
+				showValid: false
 			};
 		},
 		componentWillMount() {
-			this.setState({valid: this.props.valid, value: this.props.value});
+			this.handleUpdate(this.props.name, this.props.value);
 		},
 		handleUpdate(name, value) {
-			var valid = validationHelper(value, this.props.required, this.props.validator);
 
-			this.setState({ value: value, valid: valid });
+			const valid = validationHelper(value, this.props.required, this.props.validator);
+
+			const next = { value: value, valid: valid };
+
+			if (this.state.showValid === false && isEmpty(value) === false && valid === true) {
+				next.showValid = true;
+			}
+
+			this.setState(next);
+
 			this.props.onUpdate(name, (valid ? value : null), valid);
 		},
 		onBlur() {
-			if(!this.state.didBlur) {
-				this.setState( {didBlur: true });
-				this.handleUpdate(this.props.name, this.state.value);
-			}
+			this.setState({ showValid: true });
+			this.onBlur = () => null;
 		}
 	});
 }

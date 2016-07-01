@@ -28,15 +28,11 @@ export const input = function (value, required, validator) {
 };
 
 export const isEmpty = function(value) {
-	if(value === undefined || value === null || value === '') {
-		return true;
-	}
-	else{
-		return false;
-	}
+	return (value === undefined || value === null || value === '');
 };
 
 export const validationToShow = function(value, valid, didBlur, required) {
+
 	if(didBlur) {
 		var displayValid = valid;
 
