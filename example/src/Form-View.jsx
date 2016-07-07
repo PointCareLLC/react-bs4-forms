@@ -1,10 +1,7 @@
 
 import React from 'react';
 
-import { Radio, Checkbox, RadioGroup } from '../../src';
-import Input from '../../src/whatever/Input';
-import Textarea from '../../src/whatever/Textarea';
-import Select from '../../src/whatever/Select';
+import { Radio, Checkbox, RadioGroup, Input, Textarea, Select } from '../../src';
 
 export default React.createClass({
 	render,
@@ -54,12 +51,24 @@ function render() {
 		name: 'playback',
 		label: 'Playback Controls',
 		value: this.state.playback,
-		options: [{ value: 'rewind', text: 'Rewind' }, { value: 'play', text: 'Play' }, { value: 'foward', text: 'FastForward' }],
+		options: [{ value: 'rewind', text: 'Rewind' }, { value: 'play', text: 'Play' }, { value: 'forward', text: 'FastForward' }],
 		onUpdate: this.handleUpdate
 	};
 
 	return (
         <form noValidate style={{ marginBottom: '5em' }}>
+
+			<Input
+					className = 'address1'
+					name = 'address1'
+					label = 'Street Address'
+					placeholder = 'Street Address'
+					onUpdate = {this.handleUpdate}
+					required = {true}
+					labelHide = {true}
+				/>
+
+
             <div className="card card-block">
                 <Input {...firstName} />
             </div>

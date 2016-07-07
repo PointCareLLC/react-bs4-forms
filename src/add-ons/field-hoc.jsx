@@ -17,16 +17,20 @@ export default function (Component) {
 			value: React.PropTypes.string
 		},
 		render() {
+
+			const { className, labelHide, ...elProps} = this.props;
 			return (
-				<Fieldset valid={this.props.valid}>
-					<Label
-						id={this.props.id || this.props.name}
-						text={this.props.label}
-						required={this.props.required}
-						hide={this.props.labelHide}
-					/>
-					<Component {...this.props} />
-				</Fieldset>
+				<div className={className}>
+					<Fieldset valid={this.props.valid}>
+						<Label
+							id={this.props.id || this.props.name}
+							text={this.props.label}
+							required={this.props.required}
+							hide={labelHide}
+						/>
+						<Component {...elProps} />
+					</Fieldset>
+				</div>
 			);
 		},
 		shouldComponentUpdate(nextProps) {

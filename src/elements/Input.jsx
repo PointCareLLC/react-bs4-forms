@@ -19,13 +19,13 @@ function getDefaultProps() {
 
 function render() {
 
-	const { onUpdate, ...inputProps } = this.props;
+	const { onUpdate, valid, ...inputProps } = this.props;
 
 	return (
         <input
 			id={inputProps.name}
 			type="text"
-			className={getClass(inputProps.valid)}
+			className={getClass(valid)}
 			{...inputProps}
 			ref='el'
 			onChange={this.handleChange}

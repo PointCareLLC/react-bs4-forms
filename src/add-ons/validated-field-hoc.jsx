@@ -15,7 +15,7 @@ export default function (Component) {
 		},
 		render() {
 
-			const { onUpdate, value, ...elProps } = this.props;
+			const { onUpdate, value, validator, ...elProps } = this.props;
 
 			return (
 				<Component
