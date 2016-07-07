@@ -14,7 +14,7 @@ export default React.createClass({
 
 function render() {
 
-	const { onUpdate, text, ...inputProps } = this.props;
+	const { onUpdate, text, valid, ...inputProps } = this.props;
 
 	return (
 		<label className="c-input c-radio">
