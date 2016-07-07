@@ -20,7 +20,7 @@ export default function (Component) {
 
 			const { className, style, labelHide, ...elProps} = this.props;
 			return (
-				<div className={className} style = {style}>
+				<div className={className} style={style}>
 					<Fieldset valid={this.props.valid}>
 						<Label
 							id={this.props.id || this.props.name}
