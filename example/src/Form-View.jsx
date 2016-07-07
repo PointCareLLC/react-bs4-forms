@@ -57,18 +57,6 @@ function render() {
 
 	return (
         <form noValidate style={{ marginBottom: '5em' }}>
-
-			<Input
-					className = 'address1'
-					name = 'address1'
-					label = 'Street Address'
-					placeholder = 'Street Address'
-					onUpdate = {this.handleUpdate}
-					required = {true}
-					labelHide = {true}
-				/>
-
-
             <div className="card card-block">
                 <Input {...firstName} />
             </div>
