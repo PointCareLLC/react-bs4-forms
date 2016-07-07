@@ -19,7 +19,7 @@ function getDefaultProps() {
 
 function render() {
 
-	const { onUpdate, valid, validator, labelHide, ...inputProps } = this.props;
+	const { onUpdate, valid, ...inputProps } = this.props;
 
 	return (
         <input
