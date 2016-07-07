@@ -15,7 +15,7 @@ export default React.createClass({
 
 function render() {
 
-	const { onUpdate, placeholder, options, ...selectProps } = this.props;
+	const { onUpdate, valid, placeholder, options, ...selectProps } = this.props;
 
 	return (
         <select
