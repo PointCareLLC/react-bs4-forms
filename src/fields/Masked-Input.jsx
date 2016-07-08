@@ -10,7 +10,8 @@ const InputWithMask = validatedFieldHoc(fieldHoc(maskHoc(Input)));
 
 export default React.createClass({
 	propTypes: {
-		mask: React.PropTypes.string.isRequired
+		mask: React.PropTypes.string.isRequired,
+		validator: React.PropTypes.func
 	},
 	render() {
 		return (
@@ -18,6 +19,11 @@ export default React.createClass({
 		);
 	},
 	validator(v) {
-		return this.props.mask.length === v.length;
+
+		if (this.props.mask.length === v.length) {
+			return this.props.validator ? this.props.validator(v) : true;
+		}
+
+		return false;
 	}
 });
