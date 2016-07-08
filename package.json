@@ -65,7 +65,11 @@
       "<rootDir>/node_modules/react",
       "<rootDir>/node_modules/react-dom",
       "<rootDir>/node_modules/react-addons-test-utils"
-    ]
+  	],
+  	"moduleFileExtensions": [
+		"js",
+		"jsx"
+	]
   },
   "dependencies": {
     "babel-runtime": "^6.6.1"
