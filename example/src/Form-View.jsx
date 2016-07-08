@@ -1,13 +1,7 @@
 
 import React from 'react';
 
-import { Radio, Checkbox, RadioGroup, Input, Textarea, Select } from '../../src';
-
-import ElInput from '../../src/elements/Input';
-
-import inputMaskHoc from '../../src/add-ons/input-mask-hoc';
-
-const Ssn = inputMaskHoc('999-99-9999', ElInput);
+import { Radio, Checkbox, RadioGroup, Input, Textarea, Select, MaskedInput } from '../../src';
 
 export default React.createClass({
 	render,
@@ -39,8 +33,9 @@ function render() {
 		label: 'SSN',
 		placeholder: '123-45-6789',
 		onUpdate: this.handleUpdate,
-		required: false,
-		value: this.state.ssn
+		required: true,
+		value: this.state.ssn,
+		mask: '999-99-9999'
 	};
 
 	const quote = {
@@ -79,7 +74,7 @@ function render() {
 				<Input {...lastName} />
 			</div>
 			<div className="card card-block">
-				<Ssn {...ssn} />
+				<MaskedInput {...ssn} />
 			</div>
             <div className="card card-block">
                 <Textarea {...quote} />

@@ -2,11 +2,12 @@
 import React from 'react';
 import { toPattern } from '../helpers/mask';
 
-export default function (format, Component) {
+export default function (Component) {
 
 	return React.createClass({
 		propTypes: {
-			onUpdate: React.PropTypes.func
+			onUpdate: React.PropTypes.func,
+			mask: React.PropTypes.string.isRequired
 		},
 		componentDidUpdate() {
 
@@ -28,7 +29,9 @@ export default function (format, Component) {
 
 			this.nextInputTarget = this.nextSectionEnd === value.length ? null : event.target;
 
-			return this.props.onUpdate(name, toPattern(value || '', format));
+			const nextValue = toPattern(value || '', this.props.mask);
+
+			return this.props.onUpdate(name, nextValue);
 		}
 	});
 }
