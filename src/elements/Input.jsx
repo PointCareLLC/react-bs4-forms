@@ -33,8 +33,8 @@ function render() {
     );
 }
 
-function handleChange() {
-	this.props.onUpdate(this.props.name, this.refs.el.value);
+function handleChange(event) {
+	this.props.onUpdate(this.props.name, this.refs.el.value, event);
 }
 
 function getClass(valid) {

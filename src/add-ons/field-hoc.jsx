@@ -19,6 +19,7 @@ export default function (Component) {
 		render() {
 
 			const { className, style, labelHide, ...elProps} = this.props;
+			
 			return (
 				<div className={className} style={style}>
 					<Fieldset valid={this.props.valid}>

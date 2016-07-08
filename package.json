@@ -64,8 +64,14 @@
     "unmockedModulePathPatterns": [
       "<rootDir>/node_modules/react",
       "<rootDir>/node_modules/react-dom",
-      "<rootDir>/node_modules/react-addons-test-utils"
-    ]
+      "<rootDir>/node_modules/react-addons-test-utils",
+	  "<rootDir>/node_modules/core-js",
+	  "<rootDir>/node_modules/babel-runtime"
+  	],
+  	"moduleFileExtensions": [
+		"js",
+		"jsx"
+	]
   },
   "dependencies": {
     "babel-runtime": "^6.6.1"

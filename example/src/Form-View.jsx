@@ -1,7 +1,7 @@
 
 import React from 'react';
 
-import { Radio, Checkbox, RadioGroup, Input, Textarea, Select } from '../../src';
+import { Radio, Checkbox, RadioGroup, Input, Textarea, Select, MaskedInput } from '../../src';
 
 export default React.createClass({
 	render,
@@ -26,6 +26,16 @@ function render() {
 		onUpdate: this.handleUpdate,
 		required: false,
 		validator: (v) => v === 'James'
+	};
+
+	const ssn = {
+		name: 'ssn',
+		label: 'SSN',
+		placeholder: '123-45-6789',
+		onUpdate: this.handleUpdate,
+		required: true,
+		value: this.state.ssn,
+		mask: '999-99-9999'
 	};
 
 	const quote = {
@@ -62,6 +72,9 @@ function render() {
             </div>
 			<div className="card card-block">
 				<Input {...lastName} />
+			</div>
+			<div className="card card-block">
+				<MaskedInput {...ssn} />
 			</div>
             <div className="card card-block">
                 <Textarea {...quote} />
