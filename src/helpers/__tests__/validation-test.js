@@ -1,6 +1,7 @@
-import {input, isEmpty, validationToShow} from '../validation';
 
 jest.unmock('../validation');
+
+import {input, isEmpty, validationToShow} from '../validation';
 
 describe('validation.input', function() {
 	var value = null;
