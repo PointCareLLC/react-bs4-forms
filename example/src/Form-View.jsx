@@ -3,6 +3,12 @@ import React from 'react';
 
 import { Radio, Checkbox, RadioGroup, Input, Textarea, Select } from '../../src';
 
+import ElInput from '../../src/elements/Input';
+
+import inputMaskHoc from '../../src/add-ons/input-mask-hoc';
+
+const Ssn = inputMaskHoc('999-99-9999', ElInput);
+
 export default React.createClass({
 	render,
 	getInitialState,
@@ -26,6 +32,15 @@ function render() {
 		onUpdate: this.handleUpdate,
 		required: false,
 		validator: (v) => v === 'James'
+	};
+
+	const ssn = {
+		name: 'ssn',
+		label: 'SSN',
+		placeholder: '123-45-6789',
+		onUpdate: this.handleUpdate,
+		required: false,
+		value: this.state.ssn
 	};
 
 	const quote = {
@@ -62,6 +77,9 @@ function render() {
             </div>
 			<div className="card card-block">
 				<Input {...lastName} />
+			</div>
+			<div className="card card-block">
+				<Ssn {...ssn} />
 			</div>
             <div className="card card-block">
                 <Textarea {...quote} />
