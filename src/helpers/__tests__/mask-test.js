@@ -1,7 +1,7 @@
 
-import { toPattern } from '../mask';
+jest.unmock('../mask');
 
-jest.disableAutomock();
+import { toPattern } from '../mask';
 
 describe('helpers/mask', function() {
 
