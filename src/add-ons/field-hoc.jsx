@@ -14,12 +14,14 @@ export default function (Component) {
 			required: React.PropTypes.bool,
 			disabled: React.PropTypes.bool,
 			valid: React.PropTypes.bool,
-			value: React.PropTypes.string
+			value: React.PropTypes.string,
+			className: React.PropTypes.string,
+			style: React.PropTypes.string
 		},
 		render() {
 
 			const { className, style, labelHide, ...elProps} = this.props;
-			
+
 			return (
 				<div className={className} style={style}>
 					<Fieldset valid={this.props.valid}>
