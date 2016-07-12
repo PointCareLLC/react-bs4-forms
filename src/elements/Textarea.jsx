@@ -4,7 +4,8 @@ import React from 'react';
 export default React.createClass({
 	propTypes: {
 		name: React.PropTypes.string.isRequired,
-		onUpdate: React.PropTypes.func.isRequired
+		onUpdate: React.PropTypes.func.isRequired,
+		size: React.PropTypes.oneOf(['sm', 'lg'])
 	},
 	getDefaultProps,
 	render,
@@ -19,13 +20,13 @@ function getDefaultProps() {
 
 function render() {
 
-	const { onUpdate, valid, ...inputProps } = this.props;
+	const { onUpdate, valid, size, ...inputProps } = this.props;
 
 	return (
 		<textarea
 			id={inputProps.name}
 			rows="3"
-			className="form-control"
+			className={size ? `form-control form-control-${size}` : 'form-control'}
 			{...inputProps}
 			ref='el'
 			onChange={this.handleChange}
