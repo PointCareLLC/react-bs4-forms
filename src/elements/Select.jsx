@@ -7,7 +7,8 @@ export default React.createClass({
 		onUpdate: React.PropTypes.func.isRequired,
 		options: React.PropTypes.array.isRequired,
 		placeholder: React.PropTypes.string,
-		value: React.PropTypes.string
+		value: React.PropTypes.string,
+		size: React.PropTypes.oneOf(['sm', 'lg'])
 	},
 	render,
 	handleChange
@@ -15,12 +16,12 @@ export default React.createClass({
 
 function render() {
 
-	const { onUpdate, valid, placeholder, options, ...selectProps } = this.props;
+	const { onUpdate, valid, placeholder, options, size, ...selectProps } = this.props;
 
 	return (
         <select
 			id={this.props.name}
-			className="form-control c-select"
+			className={size ? `form-control form-control-${size} c-select` : 'form-control c-select'}
 			{...selectProps}
 			ref='el'
 			onChange={this.handleChange}>

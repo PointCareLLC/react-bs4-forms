@@ -4,7 +4,8 @@ import React from 'react';
 export default React.createClass({
 	propTypes: {
 		name: React.PropTypes.string.isRequired,
-		onUpdate: React.PropTypes.func.isRequired
+		onUpdate: React.PropTypes.func.isRequired,
+		size: React.PropTypes.oneOf(['sm', 'lg'])
 	},
 	getDefaultProps,
 	render,
@@ -19,13 +20,13 @@ function getDefaultProps() {
 
 function render() {
 
-	const { onUpdate, valid, ...inputProps } = this.props;
+	const { onUpdate, valid, size, ...inputProps } = this.props;
 
 	return (
         <input
 			id={inputProps.name}
 			type="text"
-			className={getClass(valid)}
+			className={getClass(valid, size)}
 			{...inputProps}
 			ref='el'
 			onChange={this.handleChange}
@@ -37,16 +38,23 @@ function handleChange(event) {
 	this.props.onUpdate(this.props.name, this.refs.el.value, event);
 }
 
-function getClass(valid) {
+function getClass(valid, size) {
+
+	let out;
+
 	switch (valid) {
 
 	case (true):
-		return 'form-control form-control-success';
+		out = 'form-control form-control-success';
+		break;
 
 	case (false):
-		return 'form-control form-control-danger';
+		out = 'form-control form-control-danger';
+		break;
 
 	default:
-		return 'form-control';
+		out = 'form-control';
 	}
+
+	return size ? `${out} form-control-${size}` : out;
 }
