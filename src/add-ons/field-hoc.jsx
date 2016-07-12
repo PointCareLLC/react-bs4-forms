@@ -16,7 +16,7 @@ export default function (Component) {
 			valid: React.PropTypes.bool,
 			value: React.PropTypes.string,
 			className: React.PropTypes.string,
-			style: React.PropTypes.string
+			style: React.PropTypes.object
 		},
 		render() {
 
