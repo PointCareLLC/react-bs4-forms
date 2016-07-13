@@ -16,7 +16,8 @@ export default function (Component) {
 			valid: React.PropTypes.bool,
 			value: React.PropTypes.string,
 			className: React.PropTypes.string,
-			style: React.PropTypes.object
+			style: React.PropTypes.object,
+			size: React.PropTypes.oneOf(['sm', 'lg'])
 		},
 		render() {
 
@@ -24,7 +25,7 @@ export default function (Component) {
 
 			return (
 				<div className={className} style={style}>
-					<Fieldset valid={this.props.valid}>
+					<Fieldset valid={this.props.valid} size={this.props.size}>
 						<Label
 							id={this.props.id || this.props.name}
 							text={this.props.label}

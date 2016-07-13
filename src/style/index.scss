@@ -12,9 +12,12 @@
 	@import "~bootstrap/scss/reboot";
 	@import "~bootstrap/scss/type";
 	@import "~bootstrap/scss/forms";
-	
+
 	// Components
 	@import "~bootstrap/scss/input-group";
 	@import "~bootstrap/scss/custom-forms";
 	@import "~bootstrap/scss/labels";
+
+	// Custom
+	@import "./fieldset";
 }
