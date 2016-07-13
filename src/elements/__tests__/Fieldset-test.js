@@ -52,4 +52,44 @@ describe('fields/Input', () => {
 
 		expect(inputNode.className).toEqual('form-group has-danger');
 	});
+
+	it('should render with expected className when props.size is "sm"', () => {
+
+		props.size = 'sm';
+
+		var input = TestUtils.renderIntoDocument(
+			<Fieldset {...props} />
+		);
+
+		var inputNode = ReactDOM.findDOMNode(input);
+
+		expect(inputNode.className).toEqual('form-group form-group-sm');
+	});
+
+	it('should render with expected className when props.size is "sm"', () => {
+
+		props.size = 'lg';
+
+		var input = TestUtils.renderIntoDocument(
+			<Fieldset {...props} />
+		);
+
+		var inputNode = ReactDOM.findDOMNode(input);
+
+		expect(inputNode.className).toEqual('form-group form-group-lg');
+	});
+
+	it('should render with expected className when given props.size and props.valid', () => {
+
+		props.size = 'sm';
+		props.valid = true;
+
+		var input = TestUtils.renderIntoDocument(
+			<Fieldset {...props} />
+		);
+
+		var inputNode = ReactDOM.findDOMNode(input);
+
+		expect(inputNode.className).toEqual('form-group has-success form-group-sm');
+	});
 });
