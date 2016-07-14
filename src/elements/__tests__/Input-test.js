@@ -10,13 +10,15 @@ describe('fields/Input', () => {
 	var props = null;
 	var updateName = null;
 	var updateValue = null;
+	var updateEvent = null;
 
 	beforeEach(function() {
 		props = {
 			name: 'firstName',
-			onUpdate: (name, value) => {
+			onUpdate: (name, value, event) => {
 				updateName = name;
 				updateValue = value;
+				updateEvent = event;
 			},
 			size: undefined
 		};
@@ -77,6 +79,34 @@ describe('fields/Input', () => {
 			var inputNode = ReactDOM.findDOMNode(input);
 
 			expect(inputNode.value).toEqual('Billy');
+		});
+	});
+
+	describe('onUpdate', function() {
+
+		var input = null;
+		var inputNode = null;
+
+		beforeEach(function() {
+			input = TestUtils.renderIntoDocument(
+				<Input {...props} />
+			);
+
+			inputNode = ReactDOM.findDOMNode(input);
+			inputNode.value = 'Billy';
+			TestUtils.Simulate.change(inputNode);
+		});
+
+		it('should give expected name', function() {
+			expect(updateName).toBe('firstName');
+		});
+
+		it('should give expected value', function() {
+			expect(updateValue).toBe('Billy');
+		});
+
+		it('should give expected event as object', function() {
+			expect(typeof updateEvent).toBe('object');
 		});
 	});
 });
