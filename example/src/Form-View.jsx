@@ -35,7 +35,19 @@ function render() {
 		onUpdate: this.handleUpdate,
 		required: true,
 		value: this.state.ssn,
-		mask: '999-99-9999'
+		mask: '999-99-9999',
+		maskOut: '999999999'
+	};
+
+	const phone = {
+		name: 'phone',
+		label: 'Phone',
+		placeholder: '(123) 456-7890',
+		onUpdate: this.handleUpdate,
+		required: true,
+		value: this.state.phone,
+		mask: '(999) 999-9999',
+		maskOut: '9999999999'
 	};
 
 	const quote = {
@@ -75,6 +87,9 @@ function render() {
 			</div>
 			<div className="card card-block">
 				<MaskedInput {...ssn} />
+			</div>
+			<div className="card card-block">
+				<MaskedInput {...phone} />
 			</div>
             <div className="card card-block">
                 <Textarea {...quote} />
