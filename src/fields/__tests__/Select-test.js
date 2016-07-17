@@ -4,7 +4,7 @@ jest.disableAutomock();
 import React from 'react';
 import ReactDOM from 'react-dom';
 import TestUtils from 'react-addons-test-utils';
-import Input from '../Masked-Input';
+import Input from '../Select';
 
 describe('field/Masked-Input', () => {
 
@@ -16,11 +16,10 @@ describe('field/Masked-Input', () => {
 	beforeEach(function() {
 
 		props = {
-			name: 'phone',
-			label: 'Phone',
-			value: '(123) 456-7890',
-			mask: '(999) 999-9999',
-			maskOut: '9999999999',
+			name: 'color',
+			label: 'Favorite Color',
+			value: 'red',
+			options: [{ value: 'red', text: 'Red' }, { value: 'blue', text: 'Blue' }, { value: 'green', text: 'Green' }],
 			onUpdate: (name, value, valid) => {
 				updateName = name;
 				updateValue = value;
@@ -33,7 +32,7 @@ describe('field/Masked-Input', () => {
 		updateValid = null;
 	});
 
-	describe('onUpdate - prop.value is valid', function() {
+	describe('onUpdate - prop.value is a valid option', function() {
 
 		beforeEach(function() {
 			TestUtils.renderIntoDocument(
@@ -42,11 +41,11 @@ describe('field/Masked-Input', () => {
 		});
 
 		it('should give expected name', function() {
-			expect(updateName).toBe('phone');
+			expect(updateName).toBe('color');
 		});
 
 		it('should give expected value', function() {
-			expect(updateValue).toBe('1234567890');
+			expect(updateValue).toBe('red');
 		});
 
 		it('should give expected valid state', function() {
@@ -63,11 +62,11 @@ describe('field/Masked-Input', () => {
 		});
 
 		it('should give expected name', function() {
-			expect(updateName).toBe('phone');
+			expect(updateName).toBe('color');
 		});
 
 		it('should give expected value', function() {
-			expect(updateValue).toBe('1234567890');
+			expect(updateValue).toBe('red');
 		});
 
 		it('should give expected valid state', function() {
@@ -84,7 +83,7 @@ describe('field/Masked-Input', () => {
 		});
 
 		it('should give expected name', function() {
-			expect(updateName).toBe('phone');
+			expect(updateName).toBe('color');
 		});
 
 		it('should give expected value', function() {
@@ -105,7 +104,7 @@ describe('field/Masked-Input', () => {
 		});
 
 		it('should give expected name', function() {
-			expect(updateName).toBe('phone');
+			expect(updateName).toBe('color');
 		});
 
 		it('should give expected value', function() {
@@ -117,16 +116,16 @@ describe('field/Masked-Input', () => {
 		});
 	});
 
-	describe('onUpdate - prop.value is partial', function() {
+	describe('onUpdate - prop.value is not an optional value', function() {
 
 		beforeEach(function() {
 			TestUtils.renderIntoDocument(
-				<Input {...props} value="123" />
+				<Input {...props} value="black" required={true} />
 			);
 		});
 
 		it('should give expected name', function() {
-			expect(updateName).toBe('phone');
+			expect(updateName).toBe('color');
 		});
 
 		it('should give expected value', function() {
@@ -135,77 +134,6 @@ describe('field/Masked-Input', () => {
 
 		it('should give expected valid state', function() {
 			expect(updateValid).toBe(false);
-		});
-	});
-
-	describe('onUpdate - prop.value is partial & prop.required is true', function() {
-
-		beforeEach(function() {
-			TestUtils.renderIntoDocument(
-				<Input {...props} value="123" required={true} />
-			);
-		});
-
-		it('should give expected name', function() {
-			expect(updateName).toBe('phone');
-		});
-
-		it('should give expected value', function() {
-			expect(updateValue).toBe(undefined);
-		});
-
-		it('should give expected valid state', function() {
-			expect(updateValid).toBe(false);
-		});
-	});
-
-	describe('onUpdate componentWillMount with not props.maskOut', function() {
-
-		beforeEach(function() {
-
-			props.maskOut = null;
-
-			TestUtils.renderIntoDocument(
-				<Input {...props} />
-			);
-		});
-
-		it('should give expected name', function() {
-			expect(updateName).toBe('phone');
-		});
-
-		it('should give expected value', function() {
-			expect(updateValue).toBe('(123) 456-7890');
-		});
-
-		it('should give expected valid state', function() {
-			expect(updateValid).toBe(true);
-		});
-	});
-
-	describe('onUpdate from change', function() {
-
-		beforeEach(function() {
-
-			var input = TestUtils.renderIntoDocument(
-				<Input {...props} />
-			);
-
-			var inputNode = ReactDOM.findDOMNode(input);
-
-			TestUtils.Simulate.change(inputNode);
-		});
-
-		it('should give expected name', function() {
-			expect(updateName).toBe('phone');
-		});
-
-		it('should give expected value', function() {
-			expect(updateValue).toBe('1234567890');
-		});
-
-		it('should give expected valid state', function() {
-			expect(updateValid).toBe(true);
 		});
 	});
 });

@@ -52,7 +52,7 @@ export default function (Component) {
 
 			this.setState(next);
 
-			this.props.onUpdate(name, (valid ? value : null), valid);
+			this.props.onUpdate(name, (valid ? value : undefined), valid);
 		},
 		onBlur() {
 			this.setState({ showValid: true });

@@ -26,7 +26,7 @@ function render() {
 			ref='el'
 			onChange={this.handleChange}>
 
-            <option value=''>{this.props.placeholder || 'Select Option'}</option>
+            <option>{this.props.placeholder || 'Select Option'}</option>
 
 			{this.props.options.map(item => {
 				return (

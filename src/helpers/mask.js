@@ -5,6 +5,10 @@ const ALPHANUM = 'S';
 
 export function toPattern(value, opts) {
 
+	if (value === '' || value === undefined || value === null) {
+		return undefined;
+	}
+
 	let pattern = (typeof opts === 'object' ? opts.pattern : opts);
 	let patternChars = pattern.replace(/\W/g, '');
 	let output = pattern.split('');

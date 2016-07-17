@@ -45,54 +45,58 @@ describe('validated-field-hoc', () => {
 		});
 	});
 
-	describe('onUpdate from componentWillMount', function() {
+	describe('onUpdate with prop.value', function() {
 
-		it('should give expected name', function() {
-
+		beforeEach(function() {
 			TestUtils.renderIntoDocument(
-				<Input {...props} />
+				<Input {...props} value="123456789" />
 			);
-
-			expect(updateName).toBe('ssn');
 		});
 
 		it('should give expected value', function() {
-
-			TestUtils.renderIntoDocument(
-				<Input {...props} />
-			);
-
-			expect(updateValue).toBe(undefined);
+			expect(updateValue).toEqual('123456789');
 		});
 
-		it('should give expected valid', function() {
-
-			TestUtils.renderIntoDocument(
-				<Input {...props} />
-			);
-
+		it('should give expected valid state', function() {
 			expect(updateValid).toEqual(true);
 		});
+	});
 
+	describe('onUpdate with prop.value is undefined', function() {
 
-		it('should give expected valid if required and no value', function() {
+		beforeEach(function() {
+			TestUtils.renderIntoDocument(
+				<Input {...props} value={undefined} />
+			);
+		});
 
+		it('should give expected value', function() {
+			expect(updateValue).toEqual(undefined);
+		});
+
+		it('should give expected valid state', function() {
+			expect(updateValid).toEqual(true);
+		});
+	});
+
+	describe('onUpdate with prop.value is undefined & prop.required is true', function() {
+
+		beforeEach(function() {
 			TestUtils.renderIntoDocument(
 				<Input {...props} required={true} value={undefined} />
 			);
+		});
 
+		it('should give expected value', function() {
+			expect(updateValue).toEqual(undefined);
+		});
+
+		it('should give expected valid state', function() {
 			expect(updateValid).toEqual(false);
 		});
+	});
 
-		it('should give expected valid if required and has value', function() {
-
-			TestUtils.renderIntoDocument(
-				<Input {...props} required={true} value="123-456-7890" />
-			);
-
-			expect(updateValid).toEqual(true);
-		});
-
+	describe('onUpdate with prop.validator func', function() {
 
 		it('should give expected valid if given validator returns true', function() {
 
