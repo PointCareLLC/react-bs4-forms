@@ -122,7 +122,8 @@ function render() {
 
 function getInitialState() {
 	return {
-		peeps: {}
+		peeps: {},
+		favcolor: 'black'
 	};
 }
 
