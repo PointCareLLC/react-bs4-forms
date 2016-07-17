@@ -18,7 +18,7 @@ export default React.createClass({
 		onUpdate: React.PropTypes.func.isRequired
 	},
 	componentWillMount() {
-		this.maskedValue = toPattern(this.props.value || '', this.props.mask);
+		this.maskedValue = toPattern(this.props.value, this.props.mask);
 	},
 	render() {
 
@@ -40,7 +40,7 @@ export default React.createClass({
 
 		this.maskedValue = value;
 
-		let outValue = this.props.maskOut ? toPattern(value || '', this.props.maskOut) : value;
+		let outValue = this.props.maskOut ? toPattern(value, this.props.maskOut) : value;
 
 		return this.props.onUpdate(name, outValue, valid);
 	}

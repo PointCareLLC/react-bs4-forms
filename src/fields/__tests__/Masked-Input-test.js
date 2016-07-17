@@ -33,7 +33,7 @@ describe('field/Masked-Input', () => {
 		updateValid = null;
 	});
 
-	describe('onUpdate componentWillMount', function() {
+	describe('onUpdate - prop.value is valid', function() {
 
 		beforeEach(function() {
 			TestUtils.renderIntoDocument(
@@ -49,8 +49,113 @@ describe('field/Masked-Input', () => {
 			expect(updateValue).toBe('1234567890');
 		});
 
-		it('should give expected valid', function() {
+		it('should give expected valid state', function() {
 			expect(updateValid).toBe(true);
+		});
+	});
+
+	describe('onUpdate - prop.value is valid & prop.required is true', function() {
+
+		beforeEach(function() {
+			TestUtils.renderIntoDocument(
+				<Input {...props} required={true} />
+			);
+		});
+
+		it('should give expected name', function() {
+			expect(updateName).toBe('phone');
+		});
+
+		it('should give expected value', function() {
+			expect(updateValue).toBe('1234567890');
+		});
+
+		it('should give expected valid state', function() {
+			expect(updateValid).toBe(true);
+		});
+	});
+
+	describe('onUpdate - prop.value is undefined', function() {
+
+		beforeEach(function() {
+			TestUtils.renderIntoDocument(
+				<Input {...props} value={undefined} />
+			);
+		});
+
+		it('should give expected name', function() {
+			expect(updateName).toBe('phone');
+		});
+
+		it('should give expected value', function() {
+			expect(updateValue).toBe(undefined);
+		});
+
+		it('should give expected valid state', function() {
+			expect(updateValid).toBe(true);
+		});
+	});
+
+	describe('onUpdate - prop.value is undefined & prop.required is true', function() {
+
+		beforeEach(function() {
+			TestUtils.renderIntoDocument(
+				<Input {...props} value={undefined} required={true} />
+			);
+		});
+
+		it('should give expected name', function() {
+			expect(updateName).toBe('phone');
+		});
+
+		it('should give expected value', function() {
+			expect(updateValue).toBe(undefined);
+		});
+
+		it('should give expected valid state', function() {
+			expect(updateValid).toBe(false);
+		});
+	});
+
+	describe('onUpdate - prop.value is partial', function() {
+
+		beforeEach(function() {
+			TestUtils.renderIntoDocument(
+				<Input {...props} value="123" />
+			);
+		});
+
+		it('should give expected name', function() {
+			expect(updateName).toBe('phone');
+		});
+
+		it('should give expected value', function() {
+			expect(updateValue).toBe(undefined);
+		});
+
+		it('should give expected valid state', function() {
+			expect(updateValid).toBe(false);
+		});
+	});
+
+	describe('onUpdate - prop.value is partial & prop.required is true', function() {
+
+		beforeEach(function() {
+			TestUtils.renderIntoDocument(
+				<Input {...props} value="123" required={true} />
+			);
+		});
+
+		it('should give expected name', function() {
+			expect(updateName).toBe('phone');
+		});
+
+		it('should give expected value', function() {
+			expect(updateValue).toBe(undefined);
+		});
+
+		it('should give expected valid state', function() {
+			expect(updateValid).toBe(false);
 		});
 	});
 
@@ -73,7 +178,7 @@ describe('field/Masked-Input', () => {
 			expect(updateValue).toBe('(123) 456-7890');
 		});
 
-		it('should give expected valid', function() {
+		it('should give expected valid state', function() {
 			expect(updateValid).toBe(true);
 		});
 	});
@@ -99,7 +204,7 @@ describe('field/Masked-Input', () => {
 			expect(updateValue).toBe('1234567890');
 		});
 
-		it('should give expected valid', function() {
+		it('should give expected valid state', function() {
 			expect(updateValid).toBe(true);
 		});
 	});
