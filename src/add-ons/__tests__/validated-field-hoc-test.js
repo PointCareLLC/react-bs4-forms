@@ -74,6 +74,15 @@ describe('validated-field-hoc', () => {
 			expect(updateValid).toEqual(true);
 		});
 
+		it('should give expected valid if not required and no value', function() {
+
+			TestUtils.renderIntoDocument(
+				<Input {...props} required={false} value={undefined} />
+			);
+
+			expect(updateValid).toEqual(true);
+		});
+
 
 		it('should give expected valid if required and no value', function() {
 
