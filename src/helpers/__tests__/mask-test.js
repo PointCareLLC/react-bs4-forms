@@ -44,4 +44,34 @@ describe('helpers/mask', function() {
 
 		expect(result).toBe('98512');
 	});
+
+	it('should return undefined if given undefined', function() {
+
+		var format = '99999';
+		var value = undefined;
+
+		var result = toPattern(value, format);
+
+		expect(result).toBe(undefined);
+	});
+
+	it('should return undefined if given null', function() {
+
+		var format = '99999';
+		var value = null;
+
+		var result = toPattern(value, format);
+
+		expect(result).toBe(undefined);
+	});
+
+	it('should return undefined if given empty string', function() {
+
+		var format = '99999';
+		var value = '';
+
+		var result = toPattern(value, format);
+
+		expect(result).toBe(undefined);
+	});
 });
