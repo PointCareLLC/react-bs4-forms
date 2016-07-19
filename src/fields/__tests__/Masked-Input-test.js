@@ -130,7 +130,7 @@ describe('field/Masked-Input', () => {
 		});
 
 		it('should give expected value', function() {
-			expect(updateValue).toBe(undefined);
+			expect(updateValue).toBe('123');
 		});
 
 		it('should give expected valid state', function() {
@@ -151,7 +151,7 @@ describe('field/Masked-Input', () => {
 		});
 
 		it('should give expected value', function() {
-			expect(updateValue).toBe(undefined);
+			expect(updateValue).toBe('123');
 		});
 
 		it('should give expected valid state', function() {
