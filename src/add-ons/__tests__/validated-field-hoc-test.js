@@ -88,11 +88,28 @@ describe('validated-field-hoc', () => {
 		});
 
 		it('should give expected value', function() {
-			expect(updateValue).toEqual(undefined);
+			expect(updateValue).toBe(undefined);
 		});
 
 		it('should give expected valid state', function() {
 			expect(updateValid).toEqual(false);
+		});
+	});
+
+	describe('onUpdate with prop.value is empty string', function() {
+
+		beforeEach(function() {
+			TestUtils.renderIntoDocument(
+				<Input {...props} value={''} />
+			);
+		});
+
+		it('should give expected value', function() {
+			expect(updateValue).toBe(undefined);
+		});
+
+		it('should give expected valid state', function() {
+			expect(updateValid).toBe(true);
 		});
 	});
 

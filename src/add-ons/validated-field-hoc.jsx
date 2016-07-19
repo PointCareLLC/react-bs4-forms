@@ -46,13 +46,15 @@ export default function (Component) {
 
 			const next = { value: value, valid: valid };
 
-			if (this.state.showValid === false && isEmpty(value) === false && valid === true) {
+			const empty = isEmpty(value);
+
+			if (this.state.showValid === false && empty === false && valid === true) {
 				next.showValid = true;
 			}
 
 			this.setState(next);
 
-			this.props.onUpdate(name, value, valid);
+			this.props.onUpdate(name, empty ? undefined : value, valid);
 		},
 		onBlur() {
 			this.setState({ showValid: true });
