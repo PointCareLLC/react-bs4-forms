@@ -96,23 +96,36 @@ describe('validated-field-hoc', () => {
 		});
 	});
 
-	describe('onUpdate with prop.validator func', function() {
+	describe('onUpdate with prop.validator that returns true', function() {
 
-		it('should give expected valid if given validator returns true', function() {
-
+		beforeEach(function() {
 			TestUtils.renderIntoDocument(
-				<Input {...props} value="123-456-7890" validator={() => true}/>
+				<Input {...props} value="123-456-7890" validator={() => true} />
 			);
-
-			expect(updateValid).toEqual(true);
 		});
 
-		it('should give expected valid if given validator returns false', function() {
+		it('should give expected value', function() {
+			expect(updateValue).toEqual('123-456-7890');
+		});
 
+		it('should give expected valid state', function() {
+			expect(updateValid).toEqual(true);
+		});
+	});
+
+	describe('onUpdate with prop.validator that returns false', function() {
+
+		beforeEach(function() {
 			TestUtils.renderIntoDocument(
-				<Input {...props} value="123-456-7890" validator={() => false}/>
+				<Input {...props} value="123-456-7890" validator={() => false} />
 			);
+		});
 
+		it('should give expected value', function() {
+			expect(updateValue).toEqual('123-456-7890');
+		});
+
+		it('should give expected valid state', function() {
 			expect(updateValid).toEqual(false);
 		});
 	});
