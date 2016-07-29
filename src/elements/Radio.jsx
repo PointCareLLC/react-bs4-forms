@@ -17,15 +17,16 @@ function render() {
 	const { onUpdate, text, valid, ...inputProps } = this.props;
 
 	return (
-		<label className="c-input c-radio">
+		<label className="custom-control custom-radio">
 			<input
 				id={`${inputProps.name}-${inputProps.value}`}
+				className="custom-control-input"
 				{...inputProps}
 				type='radio'
 				onChange={this.handleChange}
 			/>
-			<span className="c-indicator"></span>
-			{this.props.text}
+			<span className="custom-control-indicator"></span>
+			<span className="custom-control-description">{this.props.text}</span>
 		</label>
     );
 }

@@ -17,15 +17,16 @@ function render() {
 	const { onUpdate, text, ...inputProps } = this.props;
 
 	return (
-		<label className="c-input c-checkbox">
+		<label className="custom-control custom-checkbox">
 			<input
 				id={inputProps.name}
+				className="custom-control-input"
 				{...inputProps}
 				type="checkbox"
 				onChange={this.handleChange}
 			/>
-			<span className="c-indicator"></span>
-			{this.props.text}
+			<span className="custom-control-indicator"></span>
+			<span className="custom-control-description">{this.props.text}</span>
 		</label>
 	);
 }
