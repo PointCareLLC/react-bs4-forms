@@ -1,22 +1,7 @@
 
-.bs4-forms {
-
-	// Core variables and mixins
 	@import "~bootstrap/scss/variables";
 	@import "~bootstrap/scss/mixins";
-
-	// Reset and dependencies
-	@import "~bootstrap/scss/normalize";
-
-	// Core CSS
-	@import "~bootstrap/scss/reboot";
-	@import "~bootstrap/scss/type";
 	@import "~bootstrap/scss/forms";
-
-	// Components
 	@import "~bootstrap/scss/input-group";
 	@import "~bootstrap/scss/custom-forms";
-
-	// Custom
 	@import "./fieldset";
-}
