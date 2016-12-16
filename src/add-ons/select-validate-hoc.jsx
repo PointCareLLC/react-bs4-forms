@@ -7,7 +7,9 @@ export default function(Component) {
 			name: React.PropTypes.string,
 			onUpdate: React.PropTypes.func.isRequired,
 			options: React.PropTypes.array.isRequired,
-			value: React.PropTypes.string
+			value: React.PropTypes.string,
+			required: React.PropTypes.bool,
+			disablePlaceholder: React.PropTypes.bool
 		},
 		componentWillMount() {
 
@@ -24,7 +26,7 @@ export default function(Component) {
 			}
 		},
 		render() {
-			return <Component {...this.props} onUpdate={this.handleUpdate} />;
+			return <Component {...this.props} disablePlaceholder={this.props.disablePlaceholder || this.props.required} onUpdate={this.handleUpdate} />;
 		},
 		handleUpdate(name, value) {
 
