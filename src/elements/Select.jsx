@@ -17,7 +17,7 @@ export default React.createClass({
 
 function render() {
 
-	const { onUpdate, valid, placeholder, options, size, ...selectProps } = this.props;
+	const { onUpdate, valid, placeholder, options, size, disablePlaceholder, ...selectProps } = this.props;
 
 	return (
         <select
@@ -27,7 +27,7 @@ function render() {
 			ref='el'
 			onChange={this.handleChange}>
 
-			<option disabled={this.props.disablePlaceholder}>{this.props.placeholder || 'Select Option'}</option>
+			<option disabled={disablePlaceholder}>{this.props.placeholder || 'Select Option'}</option>
 
 			{this.props.options.map(item => {
 				return (
