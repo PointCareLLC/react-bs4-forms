@@ -5,6 +5,7 @@ export default React.createClass({
 	propTypes: {
 		name: React.PropTypes.string.isRequired,
 		onUpdate: React.PropTypes.func.isRequired,
+		disablePlaceholder: React.PropTypes.bool,
 		options: React.PropTypes.array.isRequired,
 		placeholder: React.PropTypes.string,
 		value: React.PropTypes.string,
@@ -26,7 +27,7 @@ function render() {
 			ref='el'
 			onChange={this.handleChange}>
 
-            <option>{this.props.placeholder || 'Select Option'}</option>
+			<option disabled={this.props.disablePlaceholder? true : false}>{this.props.placeholder || 'Select Option'}</option>
 
 			{this.props.options.map(item => {
 				return (
