@@ -27,7 +27,7 @@ function render() {
 			ref='el'
 			onChange={this.handleChange}>
 
-			<option disabled={this.props.disablePlaceholder? true : false}>{this.props.placeholder || 'Select Option'}</option>
+			<option disabled={this.props.disablePlaceholder}>{this.props.placeholder || 'Select Option'}</option>
 
 			{this.props.options.map(item => {
 				return (
