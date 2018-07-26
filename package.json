@@ -1,6 +1,6 @@
 {
   "name": "@pointcare/react-bs4-forms",
-  "version": "3.2.1",
+  "version": "3.2.2",
   "description": "A Bootstrap 4 forms library for React",
   "main": "lib/index.js",
   "scripts": {
