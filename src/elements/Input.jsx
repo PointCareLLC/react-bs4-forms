@@ -26,6 +26,7 @@ function render() {
         <input
 			id={inputProps.name}
 			type="text"
+			autoComplete="off"
 			className={getClass(valid, size)}
 			{...inputProps}
 			ref='el'
