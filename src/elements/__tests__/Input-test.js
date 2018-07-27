@@ -70,7 +70,7 @@ describe('fields/Input', () => {
 			expect(inputNode.className).toEqual('form-control form-control-danger');
 		});
 
-		it('should have expected valie if given prop.value', () => {
+		it('should have expected value if given prop.value', () => {
 
 			var input = TestUtils.renderIntoDocument(
 				<Input {...props} value='Billy' />
@@ -79,6 +79,17 @@ describe('fields/Input', () => {
 			var inputNode = ReactDOM.findDOMNode(input);
 
 			expect(inputNode.value).toEqual('Billy');
+		});
+
+		it('should have expected value "on" if given prop.autoComplete is set to "on"', () => {
+
+			var addedProp = { ...props, autoComplete: 'on' };
+			var input = TestUtils.renderIntoDocument(
+				<Input {...addedProp} />
+			);
+
+			var inputNode = ReactDOM.findDOMNode(input);
+			expect(inputNode.getAttribute('autoComplete')).toEqual('on');
 		});
 	});
 
